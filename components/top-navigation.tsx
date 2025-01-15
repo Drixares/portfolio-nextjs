@@ -20,7 +20,7 @@ const TopNavigation = () => {
 
     return (
         <nav
-            className="sticky top-0 isolate z-10 flex items-center justify-center py-4 px-1"
+            className="sticky top-0 isolate z-10 flex items-center justify-center py-5 px-1"
             onMouseLeave={() => setIdx(null)}
         >
             <div
@@ -37,7 +37,7 @@ const TopNavigation = () => {
                         }}
                         onPointerEnter={() => setIdx(idx)}
                         className={cn(
-                            `text-neutral-600 hover:text-neutral-950 px-3 py-2`,
+                            `text-neutral-600 hover:text-neutral-950 px-3 py-1`,
                             pathname === path && "text-neutral-950"
                         )}
                     >
@@ -47,7 +47,7 @@ const TopNavigation = () => {
                 <AnimatePresence>
                     {hoveredLink && (
                         <motion.div
-                            className="absolute left-0 -z-10 h-7 rounded bg-neutral-200 backdrop-blur"
+                            className="absolute left-0 -z-10 h-7 rounded bg-neutral-100 backdrop-blur"
                             initial={{
                                 left: hoveredLink.left - (navRect?.left || 0),
                                 height: hoveredLink.height,
@@ -65,6 +65,9 @@ const TopNavigation = () => {
                                 height: hoveredLink.height,
                                 width: hoveredLink.width,
                                 opacity: 0,
+                            }}
+                            transition={{
+                                duration: 0.17,
                             }}
                         />
                     )}

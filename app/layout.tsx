@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { fraunes, inter } from "./font";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -15,7 +16,12 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${inter.className} ${fraunes.className} antialiased`}
+                suppressHydrationWarning
+                className={cn(
+                    "antialiased",
+                    fraunes.className,
+                    inter.className
+                )}
             >
                 {children}
             </body>
