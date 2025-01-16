@@ -1,7 +1,7 @@
 export const PAGES = {
     HOME: "/",
     PROJECTS: "/projects",
-    EXPERIENCES: "/experiences",
+    EXPERIENCES: "/#experiences",
     WRITING: "/writing",
 };
 

@@ -1,18 +1,16 @@
 import Link from "next/link";
-import Floating, { FloatingElement } from "./fancy/parallax-floating";
+import Floating, { FloatingElement } from "../fancy/parallax-floating";
 import Image from "next/image";
 import Learn404 from "@/app/assets/images/projects/learn404.png";
 import AdventCalendly from "@/app/assets/images/projects/advent-calendly.png";
 import QuatreDevinci from "@/app/assets/images/projects/404devinci.png";
+import { Heading2 } from "../globals/heading2";
 
 export const ProjectsSection = () => {
     return (
-        <div
-            className="mx-auto flex justify-center items-center w-3/4 h-[418px] my-24 bg-[#F8DFCB] overflow-hidden relative"
-            // ref={scope}
-        >
+        <div className="mx-auto flex justify-center items-center w-3/4 h-[418px] bg-[#F8DFCB]/50 overflow-hidden relative">
             <div className="flex flex-col items-center gap-6 z-40">
-                <h2 className="text-neutral-950 text-5xl italic">projects.</h2>
+                <Heading2 className="italic">projects.</Heading2>
                 <Link
                     href="/projects"
                     className="px-6 py-3 rounded-full bg-neutral-950 text-neutral-50"
@@ -29,7 +27,7 @@ export const ProjectsSection = () => {
                 </FloatingElement>
                 <FloatingElement
                     depth={2}
-                    className="z-50 top-1/4 left-3/4 w-72 aspect-video"
+                    className="z-50 top-[20%] left-[70%] w-72 aspect-video"
                 >
                     <Image src={Learn404} alt="Learn 404" />
                 </FloatingElement>
