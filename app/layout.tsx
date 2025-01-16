@@ -24,7 +24,7 @@ export default function RootLayout({
                     inter.className
                 )}
             >
-                <div className="mx-auto max-w-screen-2xl w-full min-h-screen bg-background">
+                <div className="w-full bg-background">
                     <TopNavigation />
                     {children}
                 </div>

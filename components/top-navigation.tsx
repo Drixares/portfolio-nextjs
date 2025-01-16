@@ -47,7 +47,7 @@ const TopNavigation = () => {
                 <AnimatePresence>
                     {hoveredLink && (
                         <motion.div
-                            className="absolute left-0 -z-10 h-7 rounded bg-neutral-100 backdrop-blur"
+                            className="absolute left-0 -z-10 h-7 rounded-sm bg-neutral-200/70 backdrop-blur"
                             initial={{
                                 left: hoveredLink.left - (navRect?.left || 0),
                                 height: hoveredLink.height,

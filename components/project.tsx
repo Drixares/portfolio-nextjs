@@ -31,7 +31,7 @@ const Project = ({ project, size }: ProjectProps) => {
         <div
             key={project.title}
             className={cn(
-                `group bg-neutral-100/70 rounded flex flex-col justify-between overflow-hidden hover:bg-neutral-100`,
+                `group bg-neutral-100/70 rounded-sm flex flex-col justify-between overflow-hidden hover:bg-neutral-100`,
                 size ? columnSpan[size] : null
             )}
         >
@@ -66,7 +66,7 @@ const Project = ({ project, size }: ProjectProps) => {
                 </TooltipProvider>
             </div>
             <div
-                className="mx-auto w-3/4 overflow-hidden rounded translate-y-6 
+                className="mx-auto w-3/4 overflow-hidden rounded-sm translate-y-6 
                     group-hover:scale-105 transition-transform duration-200"
             >
                 <Image
