@@ -20,11 +20,11 @@ const TopNavigation = () => {
 
     return (
         <nav
-            className="sticky top-0 isolate z-10 flex items-center justify-center py-5 px-1"
+            className="sticky top-0 isolate z-50 flex items-center justify-center pt-10 px-1"
             onMouseLeave={() => setIdx(null)}
         >
             <div
-                className="relative flex rounded-lg border border-neutral-200 bg-white/70 p-1 shadow-md backdrop-blur-md"
+                className="relative flex rounded-lg border border-neutral-200 bg-white/80 p-1 shadow-md backdrop-blur-md"
                 ref={(el) => setNavRef(el!)}
                 style={{ transform: "none" }}
             >

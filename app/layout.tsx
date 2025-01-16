@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { fraunes, inter } from "./font";
 import { cn } from "@/lib/utils";
+import TopNavigation from "@/components/top-navigation";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -23,7 +24,10 @@ export default function RootLayout({
                     inter.className
                 )}
             >
-                {children}
+                <div className="mx-auto max-w-screen-2xl w-full min-h-screen bg-background">
+                    <TopNavigation />
+                    {children}
+                </div>
             </body>
         </html>
     );
