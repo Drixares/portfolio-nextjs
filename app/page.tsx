@@ -1,4 +1,5 @@
 import LatestProjects from "@/components/latest-projects";
+import { ProjectsSection } from "@/components/projects-section";
 
 export default function Home() {
     return (
@@ -14,7 +15,7 @@ export default function Home() {
                         <span
                             className="relative z-20 before:-z-10 before:content-[''] before:absolute before:left-1/2 
                                 before:top-1/2 before:-translate-x-1/2 before:-translate-y-[40%] before:w-[102%] before:h-[90%]
-                                 before:bg-[#0CE548]/20 before:-rotate-1 before:rounded-md leading-tight"
+                                 before:bg-[#F8DFCB] before:-rotate-1 leading-tight"
                         >
                             experiences
                         </span>
@@ -22,6 +23,7 @@ export default function Home() {
                 </h1>
             </div>
             <LatestProjects />
+            <ProjectsSection />
         </>
     );
 }

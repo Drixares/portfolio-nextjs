@@ -1,8 +1,9 @@
 import AdventCalendly from "@/app/assets/images/projects/advent-calendly.png";
 import Learn404 from "@/app/assets/images/projects/learn404.png";
 import DinoDevinci from "@/app/assets/images/projects/404devinci.png";
+import { Project, ProjectLatest } from "@/types/projects";
 
-export const latestsProjects = [
+export const latestsProjects: ProjectLatest[] = [
     {
         slug: "advent-calendy",
         title: "Advent Calendly",
@@ -20,7 +21,7 @@ export const latestsProjects = [
     },
 ];
 
-export const allProjects = [
+export const allProjects: Project[] = [
     {
         slug: "advent-calendy",
         title: "Advent Calendly",
