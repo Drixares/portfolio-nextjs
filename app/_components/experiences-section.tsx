@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Heading2 } from "../globals/heading2";
+import { Heading2 } from "../../components/heading2";
 import { Experience } from "@/types/experiences";
 import { Line2 } from "./lines";
 

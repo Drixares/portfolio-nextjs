@@ -1,5 +1,5 @@
 import { latestsProjects } from "@/constants/projects";
-import Project from "../project";
+import Project from "../../components/project";
 
 const LatestProjects = () => {
     return (

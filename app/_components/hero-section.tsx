@@ -1,5 +1,5 @@
-import Hoverline from "../hoverline";
-import LatestProjects from "./latest-projects";
+import Hoverline from "../../components/hoverline";
+import LatestProjects from "@/app/_components/latest-projects";
 
 const HeroSection = () => {
     return (

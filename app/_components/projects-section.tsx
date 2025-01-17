@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import Floating, { FloatingElement } from "../fancy/parallax-floating";
+import Floating, {
+    FloatingElement,
+} from "../../components/fancy/parallax-floating";
 import Image from "next/image";
 import AdventCalendly from "@/app/assets/images/projects/advent-calendly.png";
 import Learn404 from "@/app/assets/images/projects/learn404.png";
@@ -9,7 +11,7 @@ import DinoDevinci from "@/app/assets/images/projects/404devinci.png";
 import Pokedex from "@/app/assets/images/projects/pokedex.png";
 import EligiusV from "@/app/assets/images/projects/eligiusv.png";
 import { cn } from "@/lib/utils";
-import { Heading2 } from "../globals/heading2";
+import { Heading2 } from "../../components/heading2";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 

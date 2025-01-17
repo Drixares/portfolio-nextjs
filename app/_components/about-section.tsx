@@ -1,4 +1,4 @@
-import { Heading2 } from "../globals/heading2";
+import { Heading2 } from "../../components/heading2";
 import { Line } from "./lines";
 
 const AboutSection = () => {

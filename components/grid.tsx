@@ -1,8 +1,8 @@
 import { allProjects } from "@/constants/projects";
-import Project from "../project";
+import Project from "./project";
 import Link from "next/link";
 import { PAGES } from "@/constants/page";
-import { Wheel5 } from "../shapes/wheel";
+import { Wheel5 } from "./shapes/wheel";
 
 export const ProjectsGrid = () => {
     return (

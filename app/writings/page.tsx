@@ -1,5 +1,5 @@
 import Footer from "@/components/footer";
-import { ProjectsGrid } from "@/components/globals/grid";
+import { ProjectsGrid } from "@/components/grid";
 
 const WritingsPage = () => {
     return (
