@@ -1,8 +1,8 @@
 export const PAGES = {
     HOME: "/",
     PROJECTS: "/projects",
-    EXPERIENCES: "/#experiences",
-    WRITING: "/writing",
+    WRITINGS: "/writings",
+    CONTACT: "/contact",
 };
 
 export const ROUTES = [
@@ -15,11 +15,11 @@ export const ROUTES = [
         path: PAGES.PROJECTS,
     },
     {
-        label: "Experiences",
-        path: PAGES.EXPERIENCES,
+        label: "Writings",
+        path: PAGES.WRITINGS,
     },
     {
-        label: "Writing",
-        path: PAGES.WRITING,
+        label: "Contact",
+        path: PAGES.CONTACT,
     },
 ];

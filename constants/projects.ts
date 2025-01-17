@@ -1,6 +1,8 @@
 import AdventCalendly from "@/app/assets/images/projects/advent-calendly.png";
 import Learn404 from "@/app/assets/images/projects/learn404.png";
 import DinoDevinci from "@/app/assets/images/projects/404devinci.png";
+import Pokedex from "@/app/assets/images/projects/pokedex.png";
+import EligiusV from "@/app/assets/images/projects/eligiusv.png";
 import { Project, ProjectLatest } from "@/types/projects";
 
 export const latestsProjects: ProjectLatest[] = [
@@ -44,6 +46,24 @@ export const allProjects: Project[] = [
         slug: "404devinci",
         title: "La 404 Devinci",
         image: DinoDevinci,
+        links: {
+            github: "https://github.com/drixares",
+            website: "",
+        },
+    },
+    {
+        slug: "pokedex",
+        title: "Pokedex",
+        image: Pokedex,
+        links: {
+            github: "https://github.com/drixares",
+            website: "",
+        },
+    },
+    {
+        slug: "eligiusv",
+        title: "EligiusV (eSport)",
+        image: EligiusV,
         links: {
             github: "https://github.com/drixares",
             website: "",

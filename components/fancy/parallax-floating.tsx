@@ -9,7 +9,7 @@ import {
     useEffect,
     useRef,
 } from "react";
-import { useAnimationFrame } from "motion/react";
+import { useAnimationFrame, useInView } from "motion/react";
 
 import { cn } from "@/lib/utils";
 import { useMousePositionRef } from "@/hooks/use-mouse-position-ref";
@@ -40,6 +40,7 @@ const Floating = ({
     ...props
 }: FloatingProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
+    const isInView = useInView(containerRef);
     const elementsMap = useRef(
         new Map<
             string,
@@ -71,6 +72,7 @@ const Floating = ({
 
     useAnimationFrame(() => {
         if (!containerRef.current) return;
+        if (!isInView) return;
 
         elementsMap.current.forEach((data) => {
             const strength = (data.depth * sensitivity) / 20;

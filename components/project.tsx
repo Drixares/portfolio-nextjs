@@ -16,14 +16,13 @@ interface ProjectProps {
         title: string;
         image: StaticImageData;
     };
-    size?: 1 | 2 | 3 | 4;
+    size?: 1 | 2 | 3;
 }
 
 const columnSpan = {
     1: "col-span-1 aspect-square",
     2: "col-span-2 aspect-[2]",
     3: "col-span-3 aspect-[3]",
-    4: "col-span-4 aspect-[4]",
 };
 
 const Project = ({ project, size }: ProjectProps) => {
