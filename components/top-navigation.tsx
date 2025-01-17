@@ -19,11 +19,9 @@ const TopNavigation = () => {
     const navRect = navRef?.getBoundingClientRect();
 
     return (
-        <nav
-            className="sticky top-0 isolate z-50 flex items-center justify-center pt-10 px-1"
-            onMouseLeave={() => setIdx(null)}
-        >
+        <nav className="sticky top-0 isolate z-50 flex items-center justify-center pt-10 px-1">
             <div
+                onMouseLeave={() => setIdx(null)}
                 className="relative flex rounded-lg border border-neutral-200 bg-white/80 p-1 shadow-md backdrop-blur-md"
                 ref={(el) => setNavRef(el!)}
                 style={{ transform: "none" }}
