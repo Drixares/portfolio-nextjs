@@ -5,7 +5,7 @@ const LatestProjects = () => {
     return (
         <div className="mt-32">
             <p className="uppercase text-neutral-400 text-end mb-2">Latests</p>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-4">
                 {latestsProjects.map((project) => (
                     <Project key={project.slug} project={project} />
                 ))}

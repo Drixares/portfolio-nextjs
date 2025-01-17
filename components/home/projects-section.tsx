@@ -62,7 +62,7 @@ export const ProjectsSection = () => {
     const scaleValue = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
 
     return (
-        <section ref={containerRef} className="mx-auto w-3/4 h-[418px]">
+        <section ref={containerRef} className="mx-auto w-3/4 h-[450px]">
             <motion.div
                 style={{ scale: scaleValue }}
                 className="flex justify-center items-center w-full h-full bg-[#F8DFCB]/50 overflow-hidden relative rounded-sm"
