@@ -1,5 +1,5 @@
 import Footer from "@/components/footer";
-import { ProjectsGrid } from "@/components/grid";
+import { WritingsGrid } from "@/components/grid";
 
 const WritingsPage = () => {
     return (
@@ -12,7 +12,7 @@ const WritingsPage = () => {
                         articles on my blog and journaling my life.
                     </p>
                 </div>
-                <ProjectsGrid />
+                <WritingsGrid />
             </div>
             <Footer />
         </div>
