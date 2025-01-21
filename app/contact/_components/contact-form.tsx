@@ -3,6 +3,9 @@
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Input from "./input";
+import { ArrowDownRight } from "@phosphor-icons/react/dist/ssr";
+import { motion, Variants } from "motion/react";
 
 const contactSchema = z.object({
     name: z.string(),
@@ -14,10 +17,64 @@ const contactSchema = z.object({
     message: z.string(),
 });
 
-type ContactSchemaType = z.infer<typeof contactSchema>;
+export type ContactSchemaType = z.infer<typeof contactSchema>;
+export type InputName = (typeof contactInputs)[number]["name"];
+
+const contactInputs = [
+    {
+        label: "Your Name",
+        name: "name",
+        placeholder: "John Doe",
+    },
+    {
+        label: "Your Email",
+        name: "email",
+        placeholder: "example@gmail.com",
+    },
+    {
+        label: "Your Company",
+        name: "company",
+        placeholder: "Company Name",
+    },
+    {
+        label: "Your Role",
+        name: "role",
+        placeholder: "Position at your Company",
+    },
+    {
+        label: "Service",
+        name: "service",
+        placeholder: "Select a type of Service",
+    },
+    {
+        label: "Budget",
+        name: "budget",
+        placeholder: "Select a Budget",
+    },
+    {
+        label: "Your Message",
+        name: "message",
+        placeholder: "Please describe your project and expected services",
+    },
+] as const;
+
+const variants: Variants = {
+    initial: {
+        scaleX: 0,
+    },
+    hover: {
+        scaleX: 1,
+    },
+    background: {
+        height: "100%",
+        transition: {
+            delay: 0.5,
+        },
+    },
+};
 
 const ContactForm = () => {
-    const { register, handleSubmit } = useForm<ContactSchemaType>({
+    const { register, handleSubmit, formState } = useForm<ContactSchemaType>({
         resolver: zodResolver(contactSchema),
     });
 
@@ -30,117 +87,44 @@ const ContactForm = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="mt-16 w-full text-2xl space-y-4"
         >
-            <div className="group relative w-full grid grid-cols-2 items-center gap-4 h-20 border-t border-neutral-300">
-                <label htmlFor="name" className="text-neutral-800">
-                    Your Name
-                </label>
-                <input
-                    type="text"
-                    id="name"
-                    {...register("name")}
-                    placeholder="John Doe"
-                    className="bg-transparent outline-none placeholder:text-neutral-400"
+            {contactInputs.map((input) => (
+                <Input
+                    key={input.name}
+                    register={register}
+                    placeholder={input.placeholder}
+                    name={input.name}
+                    label={input.label}
                 />
-                <div
-                    className="w-0 bg-neutral-800 group-hover:w-full transition-[width] duration-500 h-[0.75px] absolute
-                    -top-[1px] left-0 z-10"
-                />
-            </div>
-            <div className="group relative w-full grid grid-cols-2 items-center gap-4 h-20 border-t border-neutral-300">
-                <label htmlFor="email" className="text-neutral-800">
-                    Your Email
-                </label>
-                <input
-                    type="text"
-                    id="email"
-                    {...register("email")}
-                    placeholder="example@gmail.com"
-                    className="bg-transparent outline-none placeholder:text-neutral-400"
-                />
-                <div
-                    className="w-0 bg-neutral-800 group-hover:w-full transition-[width] duration-500 h-[0.75px] absolute
-                    -top-[1px] left-0 z-10"
-                />
-            </div>
-            <div className="group relative w-full grid grid-cols-2 items-center gap-4 h-20 border-t border-neutral-300">
-                <label htmlFor="company" className="text-neutral-800">
-                    Your Company
-                </label>
-                <input
-                    type="text"
-                    id="company"
-                    {...register("company")}
-                    placeholder="Company Name"
-                    className="bg-transparent outline-none placeholder:text-neutral-400"
-                />
-                <div
-                    className="w-0 bg-neutral-800 group-hover:w-full transition-[width] duration-500 h-[0.75px] absolute
-                    -top-[1px] left-0 z-10"
-                />
-            </div>
-            <div className="group relative w-full grid grid-cols-2 items-center gap-4 h-20 border-t border-neutral-300">
-                <label htmlFor="role" className="text-neutral-800">
-                    Your Role
-                </label>
-                <input
-                    type="text"
-                    id="role"
-                    {...register("role")}
-                    placeholder="Position at your Company"
-                    className="bg-transparent outline-none placeholder:text-neutral-400"
-                />
-                <div
-                    className="w-0 bg-neutral-800 group-hover:w-full transition-[width] duration-500 h-[0.75px] absolute
-                    -top-[1px] left-0 z-10"
-                />
-            </div>
-            <div className="group relative w-full grid grid-cols-2 items-center gap-4 h-20 border-t border-neutral-300">
-                <label htmlFor="service" className="text-neutral-800">
-                    Service
-                </label>
-                <input
-                    type="text"
-                    id="service"
-                    {...register("service")}
-                    placeholder="Select a type of Service"
-                    className="bg-transparent outline-none placeholder:text-neutral-400"
-                />
-                <div
-                    className="w-0 bg-neutral-800 group-hover:w-full transition-[width] duration-500 h-[0.75px] absolute
-                    -top-[1px] left-0 z-10"
-                />
-            </div>
-            <div className="group relative w-full grid grid-cols-2 items-center gap-4 h-20 border-t border-neutral-300">
-                <label htmlFor="budget" className="text-neutral-800">
-                    Budget
-                </label>
-                <input
-                    type="text"
-                    id="budget"
-                    {...register("budget")}
-                    placeholder="Select a Budget"
-                    className="bg-transparent outline-none placeholder:text-neutral-400"
-                />
-                <div
-                    className="w-0 bg-neutral-800 group-hover:w-full transition-[width] duration-500 h-[0.75px] absolute
-                    -top-[1px] left-0 z-10"
-                />
-            </div>
-            <div className="group relative w-full grid grid-cols-2  items-center gap-4 h-20 border-t border-neutral-300">
-                <label htmlFor="message" className="text-neutral-800">
-                    Your Message
-                </label>
-                <input
-                    type="text"
-                    id="message"
-                    {...register("message")}
-                    placeholder="Please describe your project and expected services"
-                    className="bg-transparent outline-none placeholder:text-neutral-400"
-                />
-                <div
-                    className="w-0 bg-neutral-800 group-hover:w-full transition-[width] duration-500 h-[0.75px] absolute
-                    -top-[1px] left-0 z-10"
-                />
+            ))}
+            <div className="grid grid-cols-2 pt-20">
+                <div />
+                <div>
+                    <motion.button
+                        type="submit"
+                        onSubmit={handleSubmit(onSubmit)}
+                        disabled={formState.isSubmitting || !formState.isValid}
+                        initial="initial"
+                        whileHover={["hover", "background", "textColor"]}
+                        variants={{
+                            textColor: {
+                                color: "white",
+                                transition: {
+                                    delay: 0.5,
+                                },
+                            },
+                        }}
+                        className="relative z-20 group uppercase text-4xl font-light flex items-center gap-3 
+                        cursor-pointer"
+                    >
+                        <ArrowDownRight />
+                        Submit
+                        <motion.div
+                            className="absolute bottom-0 left-0 w-full h-px bg-neutral-800
+                            origin-center -z-10"
+                            variants={variants}
+                        />
+                    </motion.button>
+                </div>
             </div>
         </form>
     );
