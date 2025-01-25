@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
+    "@notionhq/client": "^2.2.15",
     "@phosphor-icons/react": "^2.1.7",
     "@radix-ui/react-tooltip": "^1.1.6",
     "class-variance-authority": "^0.7.1",

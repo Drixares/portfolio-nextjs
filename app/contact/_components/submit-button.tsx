@@ -1,15 +1,12 @@
 "use client";
 
 import { motion, Variants } from "motion/react";
-import { FormState, UseFormHandleSubmit } from "react-hook-form";
-import { contactSchema, ContactSchemaType } from "./contact-form";
+import { FormState } from "react-hook-form";
 import { ArrowDownRight } from "@phosphor-icons/react/dist/ssr";
-import { z } from "zod";
 import { cn } from "@/lib/utils";
+import { ContactSchemaType } from "@/types/contact-form";
 
 interface SubmitButtonProps {
-    handleSubmit: UseFormHandleSubmit<ContactSchemaType>;
-    onSubmit: (data: z.infer<typeof contactSchema>) => void;
     formState: FormState<ContactSchemaType>;
 }
 
@@ -40,15 +37,10 @@ const buttonVariants: Variants = {
     },
 };
 
-const SubmitButton = ({
-    handleSubmit,
-    onSubmit,
-    formState,
-}: SubmitButtonProps) => {
+const SubmitButton = ({ formState }: SubmitButtonProps) => {
     return (
         <motion.button
             type="submit"
-            onSubmit={handleSubmit(onSubmit)}
             disabled={formState.isSubmitting || !formState.isValid}
             initial="initial"
             whileHover={["hover", "background", "textColor"]}
