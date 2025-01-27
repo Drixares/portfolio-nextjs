@@ -54,7 +54,7 @@ const SubmitButton = ({ formState }: SubmitButtonProps) => {
             )}
         >
             <ArrowDownRight />
-            Submit
+            {formState.isSubmitting ? "Sending..." : "Submit"}
             <motion.div
                 className="absolute bottom-0 left-0 w-full h-px bg-neutral-800
             origin-center -z-10"
