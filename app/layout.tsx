@@ -3,6 +3,7 @@ import "./globals.css";
 import { fraunes, inter } from "./font";
 import { cn } from "@/lib/utils";
 import TopNavigation from "@/components/top-navigation";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -28,6 +29,7 @@ export default function RootLayout({
                     <TopNavigation />
                     {children}
                 </div>
+                <Toaster />
             </body>
         </html>
     );

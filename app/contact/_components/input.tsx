@@ -1,5 +1,5 @@
+import { ContactSchemaType, InputName } from "@/types/contact-form";
 import { useForm } from "react-hook-form";
-import { ContactSchemaType, InputName } from "./contact-form";
 
 interface InputProps {
     register: ReturnType<typeof useForm<ContactSchemaType>>["register"];

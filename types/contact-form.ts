@@ -41,12 +41,8 @@ export const contactInputs = [
 
 export type ContactSchemaType = z.infer<typeof ContactSchema>;
 export type InputName = (typeof contactInputs)[number]["name"];
-export type FormResponse =
-    | {
-          success: boolean;
-          message: string;
-      }
-    | {
-          success: boolean;
-          errors: ZodIssue[];
-      };
+export type FormResponse = {
+    success: boolean;
+    errors?: ZodIssue[];
+    message?: string;
+};

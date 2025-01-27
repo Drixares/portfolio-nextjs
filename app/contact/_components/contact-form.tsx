@@ -7,15 +7,39 @@ import SubmitButton from "./submit-button";
 import submitContactForm from "@/actions/send-form";
 import { ContactSchema } from "@/app/schema";
 import { contactInputs, ContactSchemaType } from "@/types/contact-form";
+import { toast } from "sonner";
+import { Check, WarningCircle } from "@phosphor-icons/react/dist/ssr";
 
 const ContactForm = () => {
-    const { register, handleSubmit, formState } = useForm<ContactSchemaType>({
-        resolver: zodResolver(ContactSchema),
-    });
+    const { register, handleSubmit, formState, reset } =
+        useForm<ContactSchemaType>({
+            resolver: zodResolver(ContactSchema),
+        });
+
+    const handleSubmitForm = async (data: ContactSchemaType) => {
+        const response = await submitContactForm(data);
+        if (response.success) {
+            toast.success(response.message, {
+                icon: <Check size={20} color="green" />,
+                className: "bg-emerald-100 border border-emerald-50",
+            });
+            reset();
+        } else {
+            toast.error(
+                response.message
+                    ? response.message
+                    : response.errors?.[0].message,
+                {
+                    icon: <WarningCircle size={20} color="red" />,
+                    className: "bg-rose-100 border border-rose-50",
+                }
+            );
+        }
+    };
 
     return (
         <form
-            onSubmit={handleSubmit(submitContactForm)}
+            onSubmit={handleSubmit(handleSubmitForm)}
             className="mt-16 w-full text-2xl space-y-4"
         >
             {contactInputs.map((input) => (
