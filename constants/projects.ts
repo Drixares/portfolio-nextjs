@@ -9,25 +9,27 @@ export const latestsProjects: ProjectLatest[] = [
     {
         slug: "advent-calendy",
         title: "Advent Calendly",
-        image: AdventCalendly,
+        images: [AdventCalendly],
     },
     {
         slug: "learn404",
         title: "Learn404",
-        image: Learn404,
+        images: [Learn404],
     },
     {
         slug: "404devinci",
         title: "La 404 Devinci",
-        image: DinoDevinci,
+        images: [DinoDevinci],
     },
 ];
 
 export const allProjects: Project[] = [
     {
         slug: "advent-calendy",
+        description: "",
+        collaborators: ["Nicolas", "Michel", "Paul", "Mathilde"],
         title: "Advent Calendly",
-        image: AdventCalendly,
+        images: [AdventCalendly],
         links: {
             github: "https://github.com/drixares",
             website: "",
@@ -35,38 +37,45 @@ export const allProjects: Project[] = [
     },
     {
         slug: "learn404",
+        description:
+            "A course platform that I developed with a friend during the summer of 2024.",
+        collaborators: ["Nicolas"],
         title: "Learn404",
-        image: Learn404,
+        images: [Learn404],
         links: {
             github: "https://github.com/drixares",
-            website: "",
         },
     },
     {
         slug: "404devinci",
+        description: "",
+        collaborators: ["Nicolas", "Michel"],
         title: "La 404 Devinci",
-        image: DinoDevinci,
+        images: [DinoDevinci],
         links: {
             github: "https://github.com/drixares",
-            website: "",
+            website: "https://404devinci.fr",
         },
     },
     {
         slug: "pokedex",
+        description: "",
+        collaborators: [],
         title: "Pokedex",
-        image: Pokedex,
+        images: [Pokedex],
         links: {
             github: "https://github.com/drixares",
-            website: "",
         },
     },
     {
         slug: "eligiusv",
+        description: "",
+        collaborators: [],
         title: "EligiusV (eSport)",
-        image: EligiusV,
+        images: [EligiusV],
         links: {
             github: "https://github.com/drixares",
-            website: "",
+            website: "https://eligiusv.fr",
         },
     },
 ];

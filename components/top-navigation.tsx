@@ -35,7 +35,7 @@ const TopNavigation = () => {
                         }}
                         onPointerEnter={() => setIdx(idx)}
                         className={cn(
-                            `text-neutral-600 hover:text-neutral-950 px-3 py-1`,
+                            `text-neutral-500 hover:text-neutral-950 px-3 py-1`,
                             pathname === path && "text-neutral-950"
                         )}
                     >

@@ -73,7 +73,7 @@ export const ProjectsSection = () => {
                     <Heading2 className="italic">projects.</Heading2>
                     <Link
                         href="/projects"
-                        className="px-6 py-3 rounded-full bg-neutral-950 text-neutral-50"
+                        className="px-6 py-3 rounded-full bg-neutral-950 text-neutral-50 font-medium"
                     >
                         Let&apos;s see !
                     </Link>

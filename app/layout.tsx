@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { fraunes, inter } from "./font";
+import { cabinet_grotesk, fraunes } from "./font";
 import { cn } from "@/lib/utils";
 import TopNavigation from "@/components/top-navigation";
 import { Toaster } from "sonner";
@@ -21,8 +21,8 @@ export default function RootLayout({
                 suppressHydrationWarning
                 className={cn(
                     "antialiased",
-                    fraunes.className,
-                    inter.className
+                    cabinet_grotesk.className,
+                    fraunes.className
                 )}
             >
                 <div className="w-full bg-background">

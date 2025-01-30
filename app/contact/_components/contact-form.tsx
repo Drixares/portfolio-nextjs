@@ -9,6 +9,8 @@ import { ContactSchema } from "@/app/schema";
 import { contactInputs, ContactSchemaType } from "@/types/contact-form";
 import { toast } from "sonner";
 import { Check, WarningCircle } from "@phosphor-icons/react/dist/ssr";
+import { cn } from "@/lib/utils";
+import { fraunes } from "@/app/font";
 
 const ContactForm = () => {
     const { register, handleSubmit, formState, reset } =
@@ -40,7 +42,7 @@ const ContactForm = () => {
     return (
         <form
             onSubmit={handleSubmit(handleSubmitForm)}
-            className="mt-16 w-full text-2xl space-y-4"
+            className={cn("mt-16 w-full text-2xl space-y-4", fraunes.className)}
         >
             {contactInputs.map((input) => (
                 <Input

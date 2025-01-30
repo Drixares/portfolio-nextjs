@@ -7,7 +7,7 @@ const AboutSection = () => {
             <section className="mx-auto max-w-2xl w-full flex flex-col items-center gap-6">
                 <div className="flex items-center justify-between w-full">
                     <Heading2>about.</Heading2>
-                    <span className="py-1.5 px-3 bg-[#F8DFCB] rounded-sm">
+                    <span className="py-1.5 px-3 bg-[#F8DFCB] rounded-sm font-medium">
                         looking for internship
                     </span>
                 </div>

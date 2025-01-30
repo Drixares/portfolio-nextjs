@@ -1,5 +1,7 @@
+import { cn } from "@/lib/utils";
 import Hoverline from "../../components/hoverline";
 import LatestProjects from "@/app/_components/latest-projects";
+import { fraunes } from "../font";
 
 const HeroSection = () => {
     return (
@@ -8,7 +10,12 @@ const HeroSection = () => {
                 <h2 className="text-2xl font-bold text-neutral-600">
                     Hi, I&apos;m Mattéo Marchelli.
                 </h2>
-                <h1 className="font-semibold text-7xl text-neutral-950">
+                <h1
+                    className={cn(
+                        "font-semibold text-7xl text-neutral-950",
+                        fraunes.className
+                    )}
+                >
                     <p>A fullstack developer that</p>
                     <p>
                         builds good{" "}

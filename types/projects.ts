@@ -3,12 +3,14 @@ import { StaticImageData } from "next/image";
 export type ProjectLatest = {
     slug: string;
     title: string;
-    image: StaticImageData;
+    images: StaticImageData[];
 };
 
 export type Project = ProjectLatest & {
+    description: string;
+    collaborators: string[];
     links: {
-        github: string;
-        website: string;
+        github?: string;
+        website?: string;
     };
 };

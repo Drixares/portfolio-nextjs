@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { Heading2 } from "../../components/heading2";
 import { Experience } from "@/types/experiences";
 import { Line2 } from "./lines";
+import { fraunes } from "../font";
 
 const experiences: Experience[] = [
     {
@@ -44,14 +45,19 @@ const ExperiencesSection = () => {
                             )}
                         >
                             <div>
-                                <h3 className="text-2xl text-slate-800">
+                                <h3
+                                    className={cn(
+                                        "text-2xl text-slate-800",
+                                        fraunes.className
+                                    )}
+                                >
                                     {experience.title}
                                 </h3>
                                 <p className="text-neutral-700">
                                     {experience.description}
                                 </p>
                             </div>
-                            <p className="text-neutral-800 font-light text-xl">
+                            <p className="text-neutral-800 text-xl">
                                 {experience.date}
                             </p>
                         </div>

@@ -7,14 +7,14 @@ import {
 } from "./ui/tooltip";
 import Link from "next/link";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
-import { inter } from "@/app/font";
 import { cn } from "@/lib/utils";
+import { cabinet_grotesk, fraunes } from "@/app/font";
 
 interface ProjectProps {
     project: {
         slug: string;
         title: string;
-        image: StaticImageData;
+        images: StaticImageData[];
     };
     size?: 1 | 2 | 3;
 }
@@ -35,9 +35,14 @@ const Project = ({ project, size }: ProjectProps) => {
             )}
         >
             <div className="flex items-center justify-between p-4">
-                <p className="text-neutral-500 inline-flex items-center gap-1.5">
+                <p
+                    className={cn(
+                        "text-neutral-500 inline-flex items-center gap-1.5",
+                        fraunes.className
+                    )}
+                >
                     <span>Project</span>
-                    <span className={inter.className}>·</span>
+                    <span className={cabinet_grotesk.className}>·</span>
                     <span>{project.title}</span>
                 </p>
                 <TooltipProvider>
@@ -56,7 +61,7 @@ const Project = ({ project, size }: ProjectProps) => {
                             side="left"
                             className={cn(
                                 "text-xs bg-neutral-700 text-neutral-50",
-                                inter.className
+                                cabinet_grotesk.className
                             )}
                         >
                             View project
@@ -69,7 +74,7 @@ const Project = ({ project, size }: ProjectProps) => {
                     group-hover:scale-105 transition-transform duration-200"
             >
                 <Image
-                    src={project.image}
+                    src={project.images[0]}
                     alt={project.title}
                     width={400}
                     height={300}
