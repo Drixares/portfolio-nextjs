@@ -26,9 +26,11 @@ export const latestsProjects: ProjectLatest[] = [
 export const allProjects: Project[] = [
     {
         slug: "advent-calendy",
-        description: "",
-        collaborators: ["Nicolas", "Michel", "Paul", "Mathilde"],
+        year: 2024,
+        stack: {},
         title: "Advent Calendly",
+        description: "",
+        collaborators: ["La404devinci"],
         images: [AdventCalendly],
         links: {
             github: "https://github.com/drixares",
@@ -37,10 +39,12 @@ export const allProjects: Project[] = [
     },
     {
         slug: "learn404",
+        year: 2024,
+        stack: {},
+        title: "Learn404",
         description:
             "A course platform that I developed with a friend during the summer of 2024.",
         collaborators: ["Nicolas"],
-        title: "Learn404",
         images: [Learn404],
         links: {
             github: "https://github.com/drixares",
@@ -48,9 +52,11 @@ export const allProjects: Project[] = [
     },
     {
         slug: "404devinci",
+        year: 2024,
+        stack: {},
+        title: "La 404 Devinci",
         description: "",
         collaborators: ["Nicolas", "Michel"],
-        title: "La 404 Devinci",
         images: [DinoDevinci],
         links: {
             github: "https://github.com/drixares",
@@ -59,9 +65,11 @@ export const allProjects: Project[] = [
     },
     {
         slug: "pokedex",
+        year: 2024,
+        stack: {},
+        title: "Pokedex",
         description: "",
         collaborators: [],
-        title: "Pokedex",
         images: [Pokedex],
         links: {
             github: "https://github.com/drixares",
@@ -69,9 +77,11 @@ export const allProjects: Project[] = [
     },
     {
         slug: "eligiusv",
+        year: 2024,
+        stack: {},
+        title: "EligiusV (eSport)",
         description: "",
         collaborators: [],
-        title: "EligiusV (eSport)",
         images: [EligiusV],
         links: {
             github: "https://github.com/drixares",
