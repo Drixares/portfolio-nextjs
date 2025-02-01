@@ -8,6 +8,7 @@ export type ProjectLatest = {
 };
 
 export type Project = ProjectLatest & {
+    service: string;
     description: string;
     year: number;
     stack: ProjectStack;
@@ -19,7 +20,6 @@ export type Project = ProjectLatest & {
 };
 
 export type ProjectStack = Partial<Record<StackName, StackIcon>>;
-
 export type StackName =
     | "Next.js"
     | "TypeScript"

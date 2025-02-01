@@ -26,10 +26,12 @@ export const latestsProjects: ProjectLatest[] = [
 export const allProjects: Project[] = [
     {
         slug: "advent-calendy",
+        service: "Web application",
         year: 2024,
         stack: {},
         title: "Advent Calendly",
-        description: "",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla.",
         collaborators: ["La404devinci"],
         images: [AdventCalendly],
         links: {
@@ -39,6 +41,7 @@ export const allProjects: Project[] = [
     },
     {
         slug: "learn404",
+        service: "Web application",
         year: 2024,
         stack: {},
         title: "Learn404",
@@ -52,6 +55,7 @@ export const allProjects: Project[] = [
     },
     {
         slug: "404devinci",
+        service: "Website",
         year: 2024,
         stack: {},
         title: "La 404 Devinci",
@@ -65,6 +69,7 @@ export const allProjects: Project[] = [
     },
     {
         slug: "pokedex",
+        service: "Website",
         year: 2024,
         stack: {},
         title: "Pokedex",
@@ -77,7 +82,8 @@ export const allProjects: Project[] = [
     },
     {
         slug: "eligiusv",
-        year: 2024,
+        service: "Website",
+        year: 2023,
         stack: {},
         title: "EligiusV (eSport)",
         description: "",
