@@ -1,8 +1,11 @@
 import Footer from "@/components/footer";
 import { allProjects } from "@/constants/projects";
 import { notFound } from "next/navigation";
-import AnimatedImage from "./_components/animated-image";
 import Heading1 from "@/components/heading1";
+import Badge from "@/components/badge";
+import StackList from "./_components/stack-list";
+import BlocInfo from "./_components/bloc-info";
+import Image from "next/image";
 
 const ProjectPage = async ({
     params,
@@ -17,21 +20,38 @@ const ProjectPage = async ({
     return (
         <div className="space-y-64">
             <div className="mt-16 mx-auto max-w-screen-2xl w-full">
-                <div className="grid grid-cols-2 w-full">
-                    <div className="space-y-5">
-                        <Heading1>{project?.title}</Heading1>
-                        <p className="text-lg text-neutral-600 max-w-2xl">
-                            {project?.description || "Aucune description."}
-                        </p>
+                <div className="space-y-8">
+                    <div className="flex items-center gap-8">
+                        <Heading1 className="normal-case">
+                            {project.title}
+                        </Heading1>
+                        <Badge>{project.service}</Badge>
                     </div>
-                    <div className="flex flex-col">
-                        <p className="uppercase text-neutral-400 text-end mb-2">
-                            Stack
-                        </p>
-                        <div></div>
-                    </div>
+                    <p className="text-lg text-neutral-600 max-w-2xl leading-6">
+                        {project.description || "Aucune description."}
+                    </p>
+                    <StackList stack={project.stack} />
                 </div>
-                <AnimatedImage image={project.images[0]} alt={project.title} />
+                <div className="flex items-center justify-end space-x-8 pt-16 pb-6">
+                    <BlocInfo project={project} type="links" />
+                    <div className="h-11 w-px bg-neutral-300" />
+                    <BlocInfo project={project} type="date" />
+                    {project.collaborators.length > 0 && (
+                        <>
+                            <div className="h-11 w-px bg-neutral-300" />
+                            <BlocInfo project={project} type="collaborators" />
+                        </>
+                    )}
+                </div>
+                <div className="flex flex-col items-center gap-8">
+                    {project.images.map((image, idx) => (
+                        <Image
+                            key={`img::${idx}`}
+                            src={image}
+                            alt={`Image ${idx + 1} de ${project.title}`}
+                        />
+                    ))}
+                </div>
             </div>
             <Footer />
         </div>

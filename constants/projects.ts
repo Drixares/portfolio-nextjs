@@ -3,7 +3,9 @@ import Learn404 from "@/app/assets/images/projects/learn404.png";
 import DinoDevinci from "@/app/assets/images/projects/404devinci.png";
 import Pokedex from "@/app/assets/images/projects/pokedex.png";
 import EligiusV from "@/app/assets/images/projects/eligiusv.png";
-import { Project, ProjectLatest } from "@/types/projects";
+import { Project, ProjectLatest, StackName } from "@/types/projects";
+import { MdiGit } from "@/components/icons/icons";
+import { ReactElement, SVGProps } from "react";
 
 export const latestsProjects: ProjectLatest[] = [
     {
@@ -28,11 +30,23 @@ export const allProjects: Project[] = [
         slug: "advent-calendy",
         service: "Web application",
         year: 2024,
-        stack: {},
+        stack: [
+            "React.js",
+            "Express",
+            "TypeScript",
+            "TailwindCSS",
+            "Jest",
+            "AWS",
+        ],
         title: "Advent Calendly",
         description:
             "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla.",
-        collaborators: ["La404devinci"],
+        collaborators: [
+            {
+                nickname: "La404devinci",
+                link: "https://404devinci.fr",
+            },
+        ],
         images: [AdventCalendly],
         links: {
             github: "https://github.com/drixares",
@@ -43,11 +57,16 @@ export const allProjects: Project[] = [
         slug: "learn404",
         service: "Web application",
         year: 2024,
-        stack: {},
+        stack: [],
         title: "Learn404",
         description:
             "A course platform that I developed with a friend during the summer of 2024.",
-        collaborators: ["Nicolas"],
+        collaborators: [
+            {
+                nickname: "La404devinci",
+                link: "https://404devinci.fr",
+            },
+        ],
         images: [Learn404],
         links: {
             github: "https://github.com/drixares",
@@ -57,10 +76,15 @@ export const allProjects: Project[] = [
         slug: "404devinci",
         service: "Website",
         year: 2024,
-        stack: {},
+        stack: [],
         title: "La 404 Devinci",
         description: "",
-        collaborators: ["Nicolas", "Michel"],
+        collaborators: [
+            {
+                nickname: "La404devinci",
+                link: "https://404devinci.fr",
+            },
+        ],
         images: [DinoDevinci],
         links: {
             github: "https://github.com/drixares",
@@ -71,7 +95,7 @@ export const allProjects: Project[] = [
         slug: "pokedex",
         service: "Website",
         year: 2024,
-        stack: {},
+        stack: [],
         title: "Pokedex",
         description: "",
         collaborators: [],
@@ -84,7 +108,7 @@ export const allProjects: Project[] = [
         slug: "eligiusv",
         service: "Website",
         year: 2023,
-        stack: {},
+        stack: [],
         title: "EligiusV (eSport)",
         description: "",
         collaborators: [],
@@ -95,3 +119,16 @@ export const allProjects: Project[] = [
         },
     },
 ];
+
+export const STACK_ICONS: Record<StackName, React.ComponentType> = {
+    AWS: MdiGit,
+    Express: MdiGit,
+    Jest: MdiGit,
+    Motion: MdiGit,
+    "Next.js": MdiGit,
+    "React.js": MdiGit,
+    TailwindCSS: MdiGit,
+    TypeScript: MdiGit,
+};
+
+export type Icon = (props: SVGProps<SVGSVGElement>) => ReactElement;

@@ -12,14 +12,19 @@ export type Project = ProjectLatest & {
     description: string;
     year: number;
     stack: ProjectStack;
-    collaborators: string[];
-    links: {
-        github?: string;
-        website?: string;
-    };
+    collaborators: ProjectCollaborator[];
+    links: ProjectLinks;
 };
 
-export type ProjectStack = Partial<Record<StackName, StackIcon>>;
+export type ProjectLinks = {
+    github?: string;
+    website?: string;
+};
+export type ProjectCollaborator = {
+    nickname: string;
+    link: string;
+};
+export type ProjectStack = StackName[];
 export type StackName =
     | "Next.js"
     | "TypeScript"

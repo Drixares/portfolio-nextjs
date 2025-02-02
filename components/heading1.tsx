@@ -2,9 +2,20 @@ import { fraunes } from "@/app/font";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 
-const Heading1 = ({ children }: { children: ReactNode }) => {
+interface HeadingProps {
+    children: ReactNode;
+    className?: string;
+}
+
+const Heading1 = ({ children, className }: HeadingProps) => {
     return (
-        <h1 className={cn("text-7xl lowercase font-light", fraunes.className)}>
+        <h1
+            className={cn(
+                "text-7xl lowercase font-light",
+                fraunes.className,
+                className
+            )}
+        >
             {children}
         </h1>
     );
