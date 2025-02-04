@@ -1,7 +1,6 @@
 import { STACK_ICONS } from "@/constants/projects";
 import { cn } from "@/lib/utils";
-import { StackName } from "@/types/projects";
-import { ComponentType } from "react";
+import { type StackIcon, StackName } from "@/types/projects";
 
 interface StackIconProps {
     className?: string;
@@ -9,7 +8,7 @@ interface StackIconProps {
 }
 
 const StackIcon = ({ className, icon }: StackIconProps) => {
-    const Icon: ComponentType = STACK_ICONS[icon];
+    const Icon: StackIcon = STACK_ICONS[icon];
 
     return (
         <div
@@ -19,7 +18,7 @@ const StackIcon = ({ className, icon }: StackIconProps) => {
                 className
             )}
         >
-            <Icon />
+            <Icon className="size-8 !text-neutral-600" />
         </div>
     );
 };

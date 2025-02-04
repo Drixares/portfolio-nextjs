@@ -14,10 +14,10 @@ export const ROUTES = [
         label: "Projects",
         path: PAGES.PROJECTS,
     },
-    {
-        label: "Writings",
-        path: PAGES.WRITINGS,
-    },
+    // {
+    //     label: "Writings",
+    //     path: PAGES.WRITINGS,
+    // },
     {
         label: "Contact",
         path: PAGES.CONTACT,

@@ -54,7 +54,11 @@ const ProjectPage = async ({
                     ))}
                 </div>
             </div>
-            <InlineProjectsList data="related" projects={latestsProjects} />
+            <InlineProjectsList
+                data="more"
+                column={2}
+                projects={latestsProjects.slice(0, 2)}
+            />
             <Footer />
         </div>
     );

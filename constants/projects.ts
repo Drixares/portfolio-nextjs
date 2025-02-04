@@ -5,17 +5,25 @@ import Pokedex from "@/app/assets/images/projects/pokedex.png";
 import EligiusV from "@/app/assets/images/projects/eligiusv.png";
 import { Project, ProjectCard, StackIcon, StackName } from "@/types/projects";
 import {
+    Resend,
     AWS,
     CSS,
+    DrizzleORM,
     Express,
-    FramerMotion,
     HTML,
     Javascript,
     Jest,
+    Motion,
+    Mux,
     NextJS,
     ReactJS,
+    Stripe,
     Tailwind,
     Typescript,
+    Threejs,
+    Redis,
+    Git,
+    Github,
 } from "@/components/icons/icons";
 import { ReactElement, SVGProps } from "react";
 
@@ -49,20 +57,22 @@ export const allProjects: Project[] = [
             "TailwindCSS",
             "Jest",
             "AWS",
+            "DrizzleORM",
+            "Redis",
         ],
         title: "Advent Calendly",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla.",
+        description: `A project that was La 404 Devinci advent calendar, where you can discover 
+            new challenges every day and take part in a competition with your club.`,
         collaborators: [
             {
                 nickname: "La404devinci",
-                link: "https://404devinci.fr",
+                link: "https://github.com/La-404-Devinci",
             },
         ],
         images: [AdventCalendly],
         links: {
-            github: "https://github.com/drixares",
-            website: "",
+            frontend: "https://github.com/La-404-Devinci/advent-daily-frontend",
+            backend: "https://github.com/La-404-Devinci/advent-daily-backend",
         },
         related: [],
     },
@@ -70,10 +80,11 @@ export const allProjects: Project[] = [
         slug: "learn404",
         service: "Web application",
         year: 2024,
-        stack: ["Next.js", "TailwindCSS", "Typescript"],
+        stack: ["Next.js", "TailwindCSS", "Typescript", "Stripe", "Mux"],
         title: "Learn404",
-        description:
-            "A course platform that I developed with a friend during the summer of 2024.",
+        description: `A course platform that I developed with a friend during the summer of 2024. 
+            I learned NextJS, Typescript and TailwindCSS during this project (i've nerver used it before). 
+            We also implemented Stripe and Mux to handle payments and video streaming respectively.`,
         collaborators: [
             {
                 nickname: "Nicolas",
@@ -82,7 +93,7 @@ export const allProjects: Project[] = [
         ],
         images: [Learn404],
         links: {
-            github: "https://github.com/drixares",
+            github: "https://github.com/learn404/Learn404",
         },
         related: [],
     },
@@ -92,7 +103,8 @@ export const allProjects: Project[] = [
         year: 2024,
         stack: ["Next.js", "TailwindCSS", "Typescript", "Motion"],
         title: "La 404 Devinci",
-        description: "",
+        description:
+            "Website of the 404 Devinci school association. First time using Motion (Framer Motion) on this one and it helped me trained my animation skills",
         collaborators: [
             {
                 nickname: "La404devinci",
@@ -101,7 +113,7 @@ export const allProjects: Project[] = [
         ],
         images: [DinoDevinci],
         links: {
-            github: "https://github.com/drixares",
+            github: "https://github.com/La-404-Devinci/website",
             website: "https://404devinci.fr",
         },
         related: [],
@@ -112,11 +124,12 @@ export const allProjects: Project[] = [
         year: 2024,
         stack: ["HTML", "CSS", "Javascript"],
         title: "Pokedex",
-        description: "",
+        description:
+            "The second Pokedex i've done because the first one was not optimized so i did implement caching on this one.",
         collaborators: [],
         images: [Pokedex],
         links: {
-            github: "https://github.com/drixares",
+            github: "https://github.com/Drixares/projet-pokedex",
         },
         related: [],
     },
@@ -126,11 +139,11 @@ export const allProjects: Project[] = [
         year: 2023,
         stack: ["HTML", "CSS", "Javascript"],
         title: "EligiusV (eSport)",
-        description: "",
+        description:
+            "Website of the eSport association under law 1901 - EligiusV. It was the first website i've published. I didn't use Git at this time...💀",
         collaborators: [],
         images: [EligiusV],
         links: {
-            github: "https://github.com/drixares",
             website: "https://eligiusv.fr",
         },
         related: [],
@@ -138,10 +151,12 @@ export const allProjects: Project[] = [
 ];
 
 export const STACK_ICONS: Record<StackName, StackIcon> = {
+    Git: Git,
+    Github: Github,
     AWS: AWS,
     Express: Express,
     Jest: Jest,
-    Motion: FramerMotion,
+    Motion: Motion,
     "Next.js": NextJS,
     "React.js": ReactJS,
     TailwindCSS: Tailwind,
@@ -149,6 +164,12 @@ export const STACK_ICONS: Record<StackName, StackIcon> = {
     HTML: HTML,
     CSS: CSS,
     Javascript: Javascript,
+    Stripe: Stripe,
+    Mux: Mux,
+    DrizzleORM: DrizzleORM,
+    Resend: Resend,
+    Threejs: Threejs,
+    Redis: Redis,
 };
 
 export type Icon = (props: SVGProps<SVGSVGElement>) => ReactElement;

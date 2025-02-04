@@ -17,16 +17,15 @@ export type Project = ProjectCard & {
     related: ProjectCard[];
 };
 
-export type ProjectLinks = {
-    github?: string;
-    website?: string;
-};
+export type ProjectLinks = Record<string, string>;
 export type ProjectCollaborator = {
     nickname: string;
     link: string;
 };
 export type ProjectStack = StackName[];
 export type StackName =
+    | "Git"
+    | "Github"
     | "Next.js"
     | "Typescript"
     | "TailwindCSS"
@@ -37,6 +36,12 @@ export type StackName =
     | "AWS"
     | "HTML"
     | "CSS"
-    | "Javascript";
+    | "Javascript"
+    | "Stripe"
+    | "Mux"
+    | "DrizzleORM"
+    | "Resend"
+    | "Threejs"
+    | "Redis";
 
 export type StackIcon = React.ComponentType<React.SVGProps<SVGSVGElement>>;
