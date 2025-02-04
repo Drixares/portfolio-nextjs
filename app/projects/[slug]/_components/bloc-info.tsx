@@ -1,5 +1,6 @@
 import { cabinet_grotesk } from "@/app/font";
-import { Project } from "@/types/projects";
+import { cn } from "@/lib/utils";
+import { Project, ProjectCollaborator, ProjectLinks } from "@/types/projects";
 import Link from "next/link";
 
 interface BlocInfoProps {
@@ -14,54 +15,70 @@ const BlocInfo = ({ project, type }: BlocInfoProps) => {
                 {type}
             </p>
 
-            <div className="flex items-center justify-end gap-1 sm:gap-2">
-                {type === "links" &&
-                    Object.entries(project.links).map(([key, value], idx) => (
-                        <div
-                            className="flex gap-1 sm:gap-2 justify-end"
-                            key={`links::${idx}`}
-                        >
-                            {idx !== 0 && (
-                                <span className={cabinet_grotesk.className}>
-                                    ·
-                                </span>
-                            )}
-                            <Link
-                                key={key}
-                                href={value}
-                                className="text-neutral-700 font-medium capitalize hover:underline"
-                                target="_blank"
-                            >
-                                {key}
-                            </Link>
-                        </div>
-                    ))}
-            </div>
+            {type === "links" && <LinksList links={project.links} />}
             {type === "date" && (
-                <p className="text-neutral-700 font-medium">{project.year}</p>
+                <p className="text-neutral-700 font-medium text-sm sm:text-base">
+                    {project.year}
+                </p>
             )}
-            {type === "collaborators" &&
-                project.collaborators.map((collaborator, idx) => (
-                    <div
-                        className="flex gap-1 sm:gap-2 justify-end"
-                        key={`collab::${idx}`}
-                    >
-                        {idx !== 0 && (
-                            <span className={cabinet_grotesk.className}>·</span>
-                        )}
-
-                        <Link
-                            href={collaborator.link}
-                            key={collaborator.nickname}
-                            className="text-neutral-700 font-medium hover:underline"
-                            target="_blank"
-                        >
-                            @{collaborator.nickname}
-                        </Link>
-                    </div>
-                ))}
+            {type === "collaborators" && (
+                <CollaboratorsList collaborators={project.collaborators} />
+            )}
         </div>
     );
 };
+
+function LinksList({ links }: { links: ProjectLinks }) {
+    return (
+        <div className="flex items-end justify-end gap-1 sm:gap-2">
+            {Object.entries(links).map(([key, value], idx) => (
+                <div
+                    className="flex gap-1 sm:gap-2 justify-end"
+                    key={`links::${idx}`}
+                >
+                    {idx !== 0 && (
+                        <span
+                            className={cn(
+                                "text-sm sm:text-base",
+                                cabinet_grotesk.className
+                            )}
+                        >
+                            ·
+                        </span>
+                    )}
+                    <Link
+                        key={key}
+                        href={value}
+                        className="text-neutral-700 font-medium capitalize hover:underline text-sm sm:text-base"
+                        target="_blank"
+                    >
+                        {key}
+                    </Link>
+                </div>
+            ))}
+        </div>
+    );
+}
+
+function CollaboratorsList({
+    collaborators,
+}: {
+    collaborators: ProjectCollaborator[];
+}) {
+    return collaborators.map((collaborator, idx) => (
+        <div className="flex gap-1 sm:gap-2 justify-end" key={`collab::${idx}`}>
+            {idx !== 0 && <span className={cabinet_grotesk.className}>·</span>}
+
+            <Link
+                href={collaborator.link}
+                key={collaborator.nickname}
+                className="text-neutral-700 font-medium hover:underline text-sm sm:text-base"
+                target="_blank"
+            >
+                @{collaborator.nickname}
+            </Link>
+        </div>
+    ));
+}
 
 export default BlocInfo;

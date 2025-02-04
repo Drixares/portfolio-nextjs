@@ -5,8 +5,8 @@ import Heading1 from "@/components/heading1";
 import Badge from "@/components/badge";
 import StackList from "./_components/stack-list";
 import BlocInfo from "./_components/bloc-info";
-import Image from "next/image";
 import InlineProjectsList from "@/app/_components/inline-projects-list";
+import ImagesList from "./_components/images-list";
 
 const ProjectPage = async ({
     params,
@@ -33,7 +33,7 @@ const ProjectPage = async ({
                     </p>
                     <StackList stack={project.stack} />
                 </div>
-                <div className="flex items-center justify-end space-x-3 sm:space-x-8 pt-16 pb-6">
+                <div className="flex justify-end space-x-3 sm:space-x-8 gap-y-4 flex-wrap pt-16 pb-6">
                     <BlocInfo project={project} type="links" />
                     <div className="h-11 w-px bg-neutral-300" />
                     <BlocInfo project={project} type="date" />
@@ -44,15 +44,7 @@ const ProjectPage = async ({
                         </>
                     )}
                 </div>
-                <div className="flex flex-col items-center gap-8">
-                    {project.images.map((image, idx) => (
-                        <Image
-                            key={`img::${idx}`}
-                            src={image}
-                            alt={`Image ${idx + 1} de ${project.title}`}
-                        />
-                    ))}
-                </div>
+                <ImagesList images={project.images} />
             </div>
             <InlineProjectsList
                 data="more"
