@@ -42,7 +42,10 @@ const ContactForm = () => {
     return (
         <form
             onSubmit={handleSubmit(handleSubmitForm)}
-            className={cn("mt-16 w-full text-2xl space-y-4", fraunes.className)}
+            className={cn(
+                "mt-16 w-full text-lg sm:text-xl lg:text-2xl space-y-4",
+                fraunes.className
+            )}
         >
             {contactInputs.map((input) => (
                 <Input
@@ -53,7 +56,7 @@ const ContactForm = () => {
                     label={input.label}
                 />
             ))}
-            <div className="grid grid-cols-2 pt-20">
+            <div className="grid sm:grid-cols-2 pt-6 sm:pt-20">
                 <div />
                 <div>
                     <SubmitButton formState={formState} />

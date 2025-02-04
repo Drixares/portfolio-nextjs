@@ -47,7 +47,7 @@ const SubmitButton = ({ formState }: SubmitButtonProps) => {
             whileFocus={["hover", "background", "textColor"]}
             variants={buttonVariants}
             className={cn(
-                `relative z-20 group uppercase text-4xl font-light flex items-center gap-3 
+                `relative z-20 group uppercase text-3xl sm:text-4xl font-light flex items-center gap-3 
                 cursor-pointer transition-colors duration-200 focus:outline-none`,
                 (formState.isSubmitting || !formState.isValid) &&
                     "!text-neutral-400 pointer-events-none"
