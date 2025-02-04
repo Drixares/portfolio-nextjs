@@ -13,7 +13,7 @@ export const cabinet_grotesk = localFont({
             style: "normal",
         },
         {
-            path: "./assets/fonts/CabinetGrotesk-ExtraLight.woff2",
+            path: "./assets/fonts/CabinetGrotesk-Extralight.woff2",
             weight: "200",
             style: "normal",
         },
