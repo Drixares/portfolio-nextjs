@@ -6,12 +6,14 @@ interface InlineProjectsListProps {
     projects: ProjectType[] | ProjectCard[];
     data: "latest" | "more";
     column?: number;
+    className?: string;
 }
 
 const InlineProjectsList = ({
     projects,
     data,
     column,
+    className,
 }: InlineProjectsListProps) => {
     const heading = data === "latest" ? "Latests" : "More projects";
 
@@ -23,6 +25,7 @@ const InlineProjectsList = ({
             <div
                 className={cn(
                     "grid grid-cols-3 gap-4",
+                    className,
                     column && `grid-cols-${column}`
                 )}
             >

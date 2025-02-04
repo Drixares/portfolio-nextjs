@@ -9,7 +9,7 @@ const Badge = ({ children, className }: BadgeProps) => {
     return (
         <span
             className={cn(
-                "py-1.5 px-3 bg-[#F8DFCB] rounded-sm font-medium",
+                "text-sm md:text-base py-1.5 px-3 bg-[#F8DFCB] rounded-sm font-medium",
                 className
             )}
         >

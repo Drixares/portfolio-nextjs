@@ -11,7 +11,7 @@ export const Heading2 = ({ className, children }: HeadingProps) => {
     return (
         <h2
             className={cn(
-                "text-5xl text-neutral-950 font-light",
+                "text-4xl lg:text-5xl text-neutral-950 font-light",
                 fraunes.className,
                 className
             )}

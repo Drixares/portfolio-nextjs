@@ -4,13 +4,13 @@ import { Line } from "./lines";
 
 const AboutSection = () => {
     return (
-        <div className="relative z-20 w-full">
+        <div className="relative z-20 w-full px-5">
             <section className="mx-auto max-w-2xl w-full flex flex-col items-center gap-6">
                 <div className="flex items-center justify-between w-full">
                     <Heading2>about.</Heading2>
                     <Badge>looking for internship</Badge>
                 </div>
-                <div className="flex flex-col gap-5 text-neutral-600 text-2xl">
+                <div className="flex flex-col gap-5 text-neutral-600 text-lg md:text-2xl">
                     <p>
                         A 19 yo freelance & student fullstack developer who
                         loves build things . I&apos;ve been learning web

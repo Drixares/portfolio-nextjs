@@ -43,7 +43,9 @@ const Project = ({ project, size }: ProjectProps) => {
                 >
                     <span>Project</span>
                     <span className={cabinet_grotesk.className}>·</span>
-                    <span>{project.title}</span>
+                    <span className="text-sm sm:text-base">
+                        {project.title}
+                    </span>
                 </p>
                 <TooltipProvider>
                     <Tooltip delayDuration={200}>
@@ -51,10 +53,10 @@ const Project = ({ project, size }: ProjectProps) => {
                             <Link
                                 href={`/projects/${project.slug}`}
                                 className="flex items-center justify-center rounded-full text-neutral-400 border border-transparent
-                                    size-8 group-hover:bg-white group-hover:border-neutral-200 group-hover:text-neutral-900 transition-colors
+                                    size-10 group-hover:bg-white group-hover:border-neutral-200 group-hover:text-neutral-900 transition-colors
                                     cursor-alias"
                             >
-                                <ArrowUpRight size={16} weight="bold" />
+                                <ArrowUpRight size={18} weight="bold" />
                             </Link>
                         </TooltipTrigger>
                         <TooltipContent

@@ -1,10 +1,9 @@
-import { cn } from "@/lib/utils";
 import { Heading2 } from "../../components/heading2";
-import { Experience } from "@/types/experiences";
+import { type Experience as ExperienceType } from "@/types/experiences";
 import { Line2 } from "./lines";
-import { fraunes } from "../font";
+import Experience from "./experience";
 
-const experiences: Experience[] = [
+const experiences: ExperienceType[] = [
     {
         title: "Freelance",
         description: "Fullstack developer",
@@ -29,38 +28,19 @@ const experiences: Experience[] = [
 
 const ExperiencesSection = () => {
     return (
-        <div className="relative z-20">
+        <div className="relative z-20 px-5">
             <section
-                className="flex justify-between scroll-mt-32 mx-auto max-w-screen-2xl w-full"
+                className="flex flex-col lg:flex-row justify-between gap-6 scroll-mt-32 mx-auto max-w-screen-2xl w-full"
                 id="experiences"
             >
                 <Heading2>experiences.</Heading2>
-                <div className="flex flex-col max-w-[50%] w-full ">
+                <div className="flex flex-col lg:max-w-[50%] w-full">
                     {experiences.map((experience, idx) => (
-                        <div
+                        <Experience
+                            idx={idx}
                             key={experience.title}
-                            className={cn(
-                                "w-full flex items-center justify-between px-3 h-32 border-b border-neutral-300",
-                                idx === 0 && "border-t"
-                            )}
-                        >
-                            <div>
-                                <h3
-                                    className={cn(
-                                        "text-2xl text-slate-800",
-                                        fraunes.className
-                                    )}
-                                >
-                                    {experience.title}
-                                </h3>
-                                <p className="text-neutral-700">
-                                    {experience.description}
-                                </p>
-                            </div>
-                            <p className="text-neutral-800 text-xl">
-                                {experience.date}
-                            </p>
-                        </div>
+                            experience={experience}
+                        />
                     ))}
                 </div>
             </section>
