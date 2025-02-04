@@ -6,7 +6,7 @@ import { Wheel5 } from "./shapes/wheel";
 
 export const ProjectsGrid = () => {
     return (
-        <div className="mt-16 w-full grid grid-cols-3 gap-4">
+        <div className="mt-16 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {allProjects.map((project) => (
                 <Project project={project} key={project.slug} />
             ))}
