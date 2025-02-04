@@ -33,7 +33,7 @@ const ProjectPage = async ({
                     </p>
                     <StackList stack={project.stack} />
                 </div>
-                <div className="flex items-center justify-end space-x-4 sm:space-x-8 flex-wrap pt-16 pb-6">
+                <div className="flex items-center justify-end space-x-3 sm:space-x-8 pt-16 pb-6">
                     <BlocInfo project={project} type="links" />
                     <div className="h-11 w-px bg-neutral-300" />
                     <BlocInfo project={project} type="date" />

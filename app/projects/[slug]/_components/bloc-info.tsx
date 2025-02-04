@@ -14,11 +14,11 @@ const BlocInfo = ({ project, type }: BlocInfoProps) => {
                 {type}
             </p>
 
-            <div className="flex items-center justify-end gap-2">
+            <div className="flex items-center justify-end gap-1 sm:gap-2">
                 {type === "links" &&
                     Object.entries(project.links).map(([key, value], idx) => (
                         <div
-                            className="flex gap-2 justify-end"
+                            className="flex gap-1 sm:gap-2 justify-end"
                             key={`links::${idx}`}
                         >
                             {idx !== 0 && (
@@ -43,7 +43,7 @@ const BlocInfo = ({ project, type }: BlocInfoProps) => {
             {type === "collaborators" &&
                 project.collaborators.map((collaborator, idx) => (
                     <div
-                        className="flex gap-2 justify-end"
+                        className="flex gap-1 sm:gap-2 justify-end"
                         key={`collab::${idx}`}
                     >
                         {idx !== 0 && (
