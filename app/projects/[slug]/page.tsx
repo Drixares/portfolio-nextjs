@@ -19,11 +19,11 @@ const ProjectPage = async ({
     if (!project) return notFound();
 
     return (
-        <div className="space-y-64 mx-auto max-w-screen-2xl w-full">
+        <div className="space-y-64 mx-auto max-w-screen-2xl w-full px-5">
             <div className="mt-16">
                 <div className="space-y-8">
-                    <div className="flex items-center gap-8">
-                        <Heading1 className="normal-case">
+                    <div className="flex items-center gap-y-4 gap-x-4 flex-wrap">
+                        <Heading1 className="normal-case shrink-0">
                             {project.title}
                         </Heading1>
                         <Badge>{project.service}</Badge>
@@ -33,7 +33,7 @@ const ProjectPage = async ({
                     </p>
                     <StackList stack={project.stack} />
                 </div>
-                <div className="flex items-center justify-end space-x-8 pt-16 pb-6">
+                <div className="flex items-center justify-end space-x-4 sm:space-x-8 flex-wrap pt-16 pb-6">
                     <BlocInfo project={project} type="links" />
                     <div className="h-11 w-px bg-neutral-300" />
                     <BlocInfo project={project} type="date" />
@@ -58,6 +58,7 @@ const ProjectPage = async ({
                 data="more"
                 column={2}
                 projects={latestsProjects.slice(0, 2)}
+                className="grid-cols-1 sm:grid-cols-2"
             />
             <Footer />
         </div>

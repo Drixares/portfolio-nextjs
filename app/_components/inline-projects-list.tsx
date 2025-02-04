@@ -25,8 +25,8 @@ const InlineProjectsList = ({
             <div
                 className={cn(
                     "grid grid-cols-3 gap-4",
-                    className,
-                    column && `grid-cols-${column}`
+                    column && `grid-cols-${column}`,
+                    className
                 )}
             >
                 {projects.map((project) => (
