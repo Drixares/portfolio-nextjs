@@ -3,11 +3,23 @@ import Learn404 from "@/app/assets/images/projects/learn404.png";
 import DinoDevinci from "@/app/assets/images/projects/404devinci.png";
 import Pokedex from "@/app/assets/images/projects/pokedex.png";
 import EligiusV from "@/app/assets/images/projects/eligiusv.png";
-import { Project, ProjectLatest, StackName } from "@/types/projects";
-import { MdiGit } from "@/components/icons/icons";
+import { Project, ProjectCard, StackIcon, StackName } from "@/types/projects";
+import {
+    AWS,
+    CSS,
+    Express,
+    FramerMotion,
+    HTML,
+    Javascript,
+    Jest,
+    NextJS,
+    ReactJS,
+    Tailwind,
+    Typescript,
+} from "@/components/icons/icons";
 import { ReactElement, SVGProps } from "react";
 
-export const latestsProjects: ProjectLatest[] = [
+export const latestsProjects: ProjectCard[] = [
     {
         slug: "advent-calendy",
         title: "Advent Calendly",
@@ -33,7 +45,7 @@ export const allProjects: Project[] = [
         stack: [
             "React.js",
             "Express",
-            "TypeScript",
+            "Typescript",
             "TailwindCSS",
             "Jest",
             "AWS",
@@ -52,31 +64,33 @@ export const allProjects: Project[] = [
             github: "https://github.com/drixares",
             website: "",
         },
+        related: [],
     },
     {
         slug: "learn404",
         service: "Web application",
         year: 2024,
-        stack: [],
+        stack: ["Next.js", "TailwindCSS", "Typescript"],
         title: "Learn404",
         description:
             "A course platform that I developed with a friend during the summer of 2024.",
         collaborators: [
             {
-                nickname: "La404devinci",
-                link: "https://404devinci.fr",
+                nickname: "Nicolas",
+                link: "https://github.com/miicolas",
             },
         ],
         images: [Learn404],
         links: {
             github: "https://github.com/drixares",
         },
+        related: [],
     },
     {
         slug: "404devinci",
         service: "Website",
         year: 2024,
-        stack: [],
+        stack: ["Next.js", "TailwindCSS", "Typescript", "Motion"],
         title: "La 404 Devinci",
         description: "",
         collaborators: [
@@ -90,12 +104,13 @@ export const allProjects: Project[] = [
             github: "https://github.com/drixares",
             website: "https://404devinci.fr",
         },
+        related: [],
     },
     {
         slug: "pokedex",
         service: "Website",
         year: 2024,
-        stack: [],
+        stack: ["HTML", "CSS", "Javascript"],
         title: "Pokedex",
         description: "",
         collaborators: [],
@@ -103,12 +118,13 @@ export const allProjects: Project[] = [
         links: {
             github: "https://github.com/drixares",
         },
+        related: [],
     },
     {
         slug: "eligiusv",
         service: "Website",
         year: 2023,
-        stack: [],
+        stack: ["HTML", "CSS", "Javascript"],
         title: "EligiusV (eSport)",
         description: "",
         collaborators: [],
@@ -117,18 +133,22 @@ export const allProjects: Project[] = [
             github: "https://github.com/drixares",
             website: "https://eligiusv.fr",
         },
+        related: [],
     },
 ];
 
-export const STACK_ICONS: Record<StackName, React.ComponentType> = {
-    AWS: MdiGit,
-    Express: MdiGit,
-    Jest: MdiGit,
-    Motion: MdiGit,
-    "Next.js": MdiGit,
-    "React.js": MdiGit,
-    TailwindCSS: MdiGit,
-    TypeScript: MdiGit,
+export const STACK_ICONS: Record<StackName, StackIcon> = {
+    AWS: AWS,
+    Express: Express,
+    Jest: Jest,
+    Motion: FramerMotion,
+    "Next.js": NextJS,
+    "React.js": ReactJS,
+    TailwindCSS: Tailwind,
+    Typescript: Typescript,
+    HTML: HTML,
+    CSS: CSS,
+    Javascript: Javascript,
 };
 
 export type Icon = (props: SVGProps<SVGSVGElement>) => ReactElement;

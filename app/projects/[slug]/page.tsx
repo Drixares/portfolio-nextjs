@@ -1,11 +1,12 @@
 import Footer from "@/components/footer";
-import { allProjects } from "@/constants/projects";
+import { allProjects, latestsProjects } from "@/constants/projects";
 import { notFound } from "next/navigation";
 import Heading1 from "@/components/heading1";
 import Badge from "@/components/badge";
 import StackList from "./_components/stack-list";
 import BlocInfo from "./_components/bloc-info";
 import Image from "next/image";
+import InlineProjectsList from "@/app/_components/inline-projects-list";
 
 const ProjectPage = async ({
     params,
@@ -18,8 +19,8 @@ const ProjectPage = async ({
     if (!project) return notFound();
 
     return (
-        <div className="space-y-64">
-            <div className="mt-16 mx-auto max-w-screen-2xl w-full">
+        <div className="space-y-64 mx-auto max-w-screen-2xl w-full">
+            <div className="mt-16">
                 <div className="space-y-8">
                     <div className="flex items-center gap-8">
                         <Heading1 className="normal-case">
@@ -53,6 +54,7 @@ const ProjectPage = async ({
                     ))}
                 </div>
             </div>
+            <InlineProjectsList data="related" projects={latestsProjects} />
             <Footer />
         </div>
     );

@@ -1,7 +1,8 @@
 import { cn } from "@/lib/utils";
 import Hoverline from "../../components/hoverline";
-import LatestProjects from "@/app/_components/latest-projects";
 import { fraunes } from "../font";
+import InlineProjectsList from "@/app/_components/inline-projects-list";
+import { latestsProjects } from "@/constants/projects";
 
 const HeroSection = () => {
     return (
@@ -26,7 +27,7 @@ const HeroSection = () => {
                     </p>
                 </h1>
             </div>
-            <LatestProjects />
+            <InlineProjectsList data="latest" projects={latestsProjects} />
         </div>
     );
 };
