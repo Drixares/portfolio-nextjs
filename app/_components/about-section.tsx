@@ -10,10 +10,10 @@ const AboutSection = () => {
                     <Heading2>about.</Heading2>
                     <Badge>looking for internship</Badge>
                 </div>
-                <div className="flex flex-col gap-5 text-neutral-600 text-lg md:text-2xl">
+                <div className="flex flex-col gap-5 text-neutral-600 text-lg md:text-xl">
                     <p>
                         A 19 yo freelance & student fullstack developer who
-                        loves build things . I&apos;ve been learning web
+                        loves build things. I&apos;ve been learning web
                         development on my own since 2021. I love designing
                         applications and websites (when i got inspiration).
                     </p>
