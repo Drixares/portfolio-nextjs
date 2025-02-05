@@ -22,13 +22,13 @@ const ProjectPage = async ({
         <div className="space-y-64 mx-auto max-w-screen-2xl w-full px-5">
             <div className="mt-16">
                 <div className="space-y-8">
-                    <div className="flex items-center gap-y-4 gap-x-4 flex-wrap">
+                    <div className="flex items-center gap-y-4 gap-x-8 flex-wrap">
                         <Heading1 className="normal-case shrink-0">
                             {project.title}
                         </Heading1>
                         <Badge>{project.service}</Badge>
                     </div>
-                    <p className="text-lg text-neutral-600 max-w-2xl leading-6">
+                    <p className="md:text-lg text-neutral-600 max-w-2xl leading-6">
                         {project.description || "Aucune description."}
                     </p>
                     <StackList stack={project.stack} />

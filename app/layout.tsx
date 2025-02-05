@@ -26,7 +26,7 @@ export default function RootLayout({
             <body
                 suppressHydrationWarning
                 className={cn(
-                    "antialiased",
+                    "antialiased overflow-x-hidden",
                     cabinet_grotesk.className,
                     fraunes.className
                 )}
