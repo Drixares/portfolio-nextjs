@@ -1,19 +1,19 @@
 "use client";
 
+import DinoDevinci from "@/app/assets/images/projects/404devinci.png";
+import AdventCalendly from "@/app/assets/images/projects/advent-calendly.png";
+import EligiusV from "@/app/assets/images/projects/eligiusv.png";
+import Learn404 from "@/app/assets/images/projects/learn404.png";
+import Pokedex from "@/app/assets/images/projects/pokedex.png";
+import { cn } from "@/lib/utils";
+import { motion, useScroll, useTransform } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
 import Floating, {
     FloatingElement,
 } from "../../components/fancy/parallax-floating";
-import Image from "next/image";
-import AdventCalendly from "@/app/assets/images/projects/advent-calendly.png";
-import Learn404 from "@/app/assets/images/projects/learn404.png";
-import DinoDevinci from "@/app/assets/images/projects/404devinci.png";
-import Pokedex from "@/app/assets/images/projects/pokedex.png";
-import EligiusV from "@/app/assets/images/projects/eligiusv.png";
-import { cn } from "@/lib/utils";
 import { Heading2 } from "../../components/heading2";
-import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
 
 const floatingElements = [
     {
@@ -70,7 +70,7 @@ export const ProjectsSection = () => {
         >
             <motion.div
                 style={{ scale: scaleValue }}
-                className="flex justify-center items-center w-full h-full bg-neutral-100 overflow-hidden relative rounded-sm"
+                className="flex justify-center items-center w-full h-full bg-[#F8DFCB]/30 overflow-hidden relative rounded-sm"
             >
                 <div className="flex flex-col items-center gap-6 z-40">
                     <Heading2 className="italic">projects.</Heading2>
@@ -97,5 +97,5 @@ export const ProjectsSection = () => {
                 </Floating>
             </motion.div>
         </section>
-    );
+    );  
 };

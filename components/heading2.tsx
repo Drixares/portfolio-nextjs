@@ -1,4 +1,4 @@
-import { fraunes } from "@/app/font";
+import { bricolage_grotesk } from "@/app/font";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 
@@ -12,7 +12,7 @@ export const Heading2 = ({ className, children }: HeadingProps) => {
         <h2
             className={cn(
                 "text-4xl lg:text-5xl text-neutral-950 font-light",
-                fraunes.className,
+                bricolage_grotesk.className,
                 className
             )}
         >

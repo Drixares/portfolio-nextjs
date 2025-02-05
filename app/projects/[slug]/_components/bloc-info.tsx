@@ -1,4 +1,4 @@
-import { cabinet_grotesk } from "@/app/font";
+import { bricolage_grotesk } from "@/app/font";
 import { cn } from "@/lib/utils";
 import { Project, ProjectCollaborator, ProjectLinks } from "@/types/projects";
 import Link from "next/link";
@@ -40,7 +40,7 @@ function LinksList({ links }: { links: ProjectLinks }) {
                         <span
                             className={cn(
                                 "text-sm sm:text-base",
-                                cabinet_grotesk.className
+                                bricolage_grotesk.className
                             )}
                         >
                             ·
@@ -67,7 +67,9 @@ function CollaboratorsList({
 }) {
     return collaborators.map((collaborator, idx) => (
         <div className="flex gap-1 sm:gap-2 justify-end" key={`collab::${idx}`}>
-            {idx !== 0 && <span className={cabinet_grotesk.className}>·</span>}
+            {idx !== 0 && (
+                <span className={bricolage_grotesk.className}>·</span>
+            )}
 
             <Link
                 href={collaborator.link}

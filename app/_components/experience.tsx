@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { type Experience as ExperienceType } from "@/types/experiences";
-import { fraunes } from "../font";
+import { bricolage_grotesk } from "../font";
 
 interface ExperienceProps {
     experience: ExperienceType;
@@ -20,7 +20,7 @@ const Experience = ({ experience, idx }: ExperienceProps) => {
                 <h3
                     className={cn(
                         "text-xl xs:text-2xl text-slate-800",
-                        fraunes.className
+                        bricolage_grotesk.className
                     )}
                 >
                     {experience.title}
@@ -29,7 +29,7 @@ const Experience = ({ experience, idx }: ExperienceProps) => {
                     {experience.description}
                 </p>
             </div>
-            <p className="text-neutral-800 md:text-xl shrink-0">
+            <p className="text-neutral-800 md:text-lg shrink-0">
                 {experience.date}
             </p>
         </div>

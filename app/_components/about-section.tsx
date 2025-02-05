@@ -28,7 +28,7 @@ const AboutSection = () => {
                     </p>
                 </div>
             </section>
-            <Line className="absolute -top-80 left-0 w-screen -z-10" />
+            <Line className="absolute -top-80 -left-3 w-[102vw] -z-10" />
         </div>
     );
 };

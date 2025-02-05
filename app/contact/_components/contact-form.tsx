@@ -1,16 +1,16 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import submitContactForm from "@/actions/send-form";
+import { bricolage_grotesk } from "@/app/font";
+import { ContactSchema } from "@/app/schema";
+import { cn } from "@/lib/utils";
+import { contactInputs, ContactSchemaType } from "@/types/contact-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Check, WarningCircle } from "@phosphor-icons/react/dist/ssr";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import Input from "./input";
 import SubmitButton from "./submit-button";
-import submitContactForm from "@/actions/send-form";
-import { ContactSchema } from "@/app/schema";
-import { contactInputs, ContactSchemaType } from "@/types/contact-form";
-import { toast } from "sonner";
-import { Check, WarningCircle } from "@phosphor-icons/react/dist/ssr";
-import { cn } from "@/lib/utils";
-import { fraunes } from "@/app/font";
 
 const ContactForm = () => {
     const { register, handleSubmit, formState, reset } =
@@ -44,7 +44,7 @@ const ContactForm = () => {
             onSubmit={handleSubmit(handleSubmitForm)}
             className={cn(
                 "mt-16 w-full text-lg sm:text-xl lg:text-2xl space-y-4",
-                fraunes.className
+                bricolage_grotesk.className
             )}
         >
             {contactInputs.map((input) => (

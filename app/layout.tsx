@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import { cabinet_grotesk, fraunes } from "./font";
-import { cn } from "@/lib/utils";
 import TopNavigation from "@/components/top-navigation";
+import { cn } from "@/lib/utils";
+import type { Metadata } from "next";
 import { Toaster } from "sonner";
+import { bricolage_grotesk, dm_sans } from "./font";
+import "./globals.css";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -27,11 +27,11 @@ export default function RootLayout({
                 suppressHydrationWarning
                 className={cn(
                     "antialiased overflow-x-hidden",
-                    cabinet_grotesk.className,
-                    fraunes.className
+                    dm_sans.className,
+                    bricolage_grotesk.className
                 )}
             >
-                <div className="w-full bg-background">
+                <div className="w-full bg-white">
                     <TopNavigation />
                     {children}
                 </div>
