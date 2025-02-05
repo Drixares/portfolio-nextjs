@@ -22,7 +22,7 @@ const Input = ({ register, placeholder, name, label }: InputProps) => {
                     id={name}
                     {...register(name)}
                     placeholder={placeholder}
-                    className="bg-transparent outline-none placeholder:text-neutral-400 max-sm:placeholder:text-base"
+                    className=" sm:pt-6 bg-transparent outline-none placeholder:text-neutral-400 max-sm:placeholder:text-base resize-none"
                 />
             ) : (
                 <input
