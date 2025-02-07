@@ -20,4 +20,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## ENV
 
-A [.env.example](https://github.com/Drixares/portfolio-nextjs/blob/master/.env.example) file if you want to test the contact form linked to the Notion API.  
+If you want to test the contact form linked to the Notion API, create a .env file and add your Notion env variables. You can see an example here : [.env.example](https://github.com/Drixares/portfolio-nextjs/blob/master/.env.example).  
