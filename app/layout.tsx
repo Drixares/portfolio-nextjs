@@ -8,6 +8,31 @@ import "./globals.css";
 export const metadata: Metadata = {
     title: "Portfolio - Mattéo Marchelli",
     description: "Mattéo Marchelli's portfolio website - 2025",
+    authors: [{ name: "Mattéo Marchelli", url: "https://matteo-marchelli.com" }],
+    robots: {
+        index: true,
+        follow: true,
+    },
+    openGraph: {
+        title: "Portfolio - Mattéo Marchelli",
+        description: "Mattéo Marchelli's portfolio website - 2025",
+        url: "https://matteo-marchelli.com",
+        siteName: "Mattéo Marchelli's Portfolio",
+        locale: "en_US",
+        type: "website",
+    },
+    icons: {
+        icon: "/favicon.ico",
+    },
+    keywords: [
+        "Mattéo Marchelli",
+        "Mattéo Portfolio",
+        "Web Developer",
+        "Full Stack Developer",
+        "React Developer",
+        "Next.js Developer",
+        "TypeScript Developer",
+    ], 
 };
 
 export default function RootLayout({
