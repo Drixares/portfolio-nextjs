@@ -5,8 +5,7 @@ import Link from "next/link";
 
 const NotFound = () => {
     return (
-        <main className="min-h-[80vh] relative isolate overflow-hidden">
-            <div className="mt-16 md:mt-32 mx-auto max-w-screen-2xl w-full px-5 flex flex-col md:flex-row items-center justify-center gap-10">
+            <div className="my-16 md:my-32 mx-auto max-w-screen-2xl w-full px-5 flex flex-col md:flex-row items-center justify-center gap-x-10">
                 {/* Peep illustration with hover effect */}
                 <div className="relative size-72 md:size-96 overflow-hidden group">
                     <Peep className="size-full object-cover animate-float" />
@@ -37,8 +36,6 @@ const NotFound = () => {
                     </Link>
                 </div>
             </div>
-
-        </main>
     );
 }
 
