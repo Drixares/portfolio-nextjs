@@ -5,14 +5,14 @@ import Link from "next/link";
 
 const NotFound = () => {
     return (
-            <div className="my-16 md:my-32 mx-auto max-w-screen-2xl w-full px-5 flex flex-col md:flex-row items-center justify-center gap-x-10">
+            <div className="mb-16 mt-2 md:my-32 mx-auto max-w-screen-2xl w-full px-5 flex flex-col md:flex-row items-center justify-center gap-x-10">
                 {/* Peep illustration with hover effect */}
-                <div className="relative size-72 md:size-96 overflow-hidden group">
+                <div className="relative size-64 md:size-96 overflow-hidden group">
                     <Peep className="size-full object-cover animate-float" />
                 </div>
 
                 {/* Content */}
-                <div className="flex flex-col items-center md:items-start justify-center">
+                <div className="flex flex-col items-center md:items-start justify-center max-md:text-center">
                     <Heading1 className="capitalize flex flex-col items-center md:items-start justify-center">
                         <span className="text-8xl md:text-9xl font-bold">
                             404
