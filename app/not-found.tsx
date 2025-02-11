@@ -1,6 +1,6 @@
 import Heading1 from "@/components/heading1";
 import Peep from "@/components/peep";
-import { ArrowRightIcon } from "lucide-react";
+import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
 
 const NotFound = () => {
@@ -30,9 +30,9 @@ const NotFound = () => {
                     <Link
                         href="/"
                         className="bg-neutral-900 hover:bg-neutral-800 text-white px-6 py-3 rounded-full mt-8 
-                            flex items-center gap-2 transition-all duration-300 hover:gap-3"
+                            flex items-center gap-2 group"
                     >
-                       Go back to homepage <ArrowRightIcon className="size-4" />
+                       <ArrowLeftIcon className="size-4 group-hover:-translate-x-1 transition-transform duration-300" /> Go back to homepage
                     </Link>
                 </div>
             </div>
