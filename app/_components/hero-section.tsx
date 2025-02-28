@@ -17,14 +17,15 @@ const HeroSection = () => {
                         bricolage_grotesk.className
                     )}
                 >
-                    <p>A fullstack developer that</p>
-                    <p>
+                    <span>A fullstack developer that{" "}</span>
+                    <br className="hidden sm:block" />
+                    <span>
                         builds good{" "}
                         <span className="relative z-20 leading-tight">
                             experiences
                             <Hoverline />
                         </span>
-                    </p>
+                    </span>
                 </h1>
             </div>
             <InlineProjectsList
