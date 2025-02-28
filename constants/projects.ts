@@ -1,15 +1,15 @@
-import AdventCalendly from "@/app/assets/images/projects/advent-calendly.png";
-import Learn404 from "@/app/assets/images/projects/learn404.png";
 import DinoDevinci from "@/app/assets/images/projects/404devinci.png";
-import Pokedex from "@/app/assets/images/projects/pokedex.png";
+import AdventCalendly from "@/app/assets/images/projects/advent-calendly.png";
 import EligiusV from "@/app/assets/images/projects/eligiusv.png";
-import { Project, ProjectCard, StackIcon, StackName } from "@/types/projects";
+import Learn404 from "@/app/assets/images/projects/learn404.png";
+import Pokedex from "@/app/assets/images/projects/pokedex.png";
 import {
-    Resend,
     AWS,
     CSS,
     DrizzleORM,
     Express,
+    Git,
+    Github,
     HTML,
     Javascript,
     Jest,
@@ -17,14 +17,14 @@ import {
     Mux,
     NextJS,
     ReactJS,
+    Redis,
+    Resend,
     Stripe,
     Tailwind,
-    Typescript,
     Threejs,
-    Redis,
-    Git,
-    Github,
+    Typescript,
 } from "@/components/icons/icons";
+import { Project, ProjectCard, StackIcon, StackName } from "@/types/projects";
 import { ReactElement, SVGProps } from "react";
 
 export const latestsProjects: ProjectCard[] = [
@@ -83,7 +83,7 @@ export const allProjects: Project[] = [
         stack: ["Next.js", "TailwindCSS", "Typescript", "Stripe", "Mux"],
         title: "Learn404",
         description: `A course platform that I developed with a friend during the summer of 2024. 
-            I learned NextJS, Typescript and TailwindCSS during this project (i've nerver used it before). 
+            I learned NextJS, Typescript and TailwindCSS during this project (i've never used it before). 
             We also implemented Stripe and Mux to handle payments and video streaming respectively.`,
         collaborators: [
             {
