@@ -1,10 +1,12 @@
 import InlineProjectsList from "@/app/_components/inline-projects-list";
-import { latestsProjects } from "@/constants/projects";
+import { PROJECTS } from "@/constants/projects";
 import { cn } from "@/lib/utils";
 import Hoverline from "../../components/hoverline";
 import { bricolage_grotesk } from "../font";
 
 const HeroSection = () => {
+    const featuredProjects = PROJECTS.slice(0, 3);
+
     return (
         <div className="mt-16 md:mt-32 mx-auto max-w-screen-2xl w-full px-5 z-30 relative">
             <div className="space-y-5">
@@ -30,7 +32,7 @@ const HeroSection = () => {
             </div>
             <InlineProjectsList
                 data="latest"
-                projects={latestsProjects}
+                projects={featuredProjects}
                 className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
             />
         </div>

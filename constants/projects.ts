@@ -25,29 +25,45 @@ import {
     Typescript,
 } from "@/components/icons/icons";
 import { Project, ProjectCard, StackIcon, StackName } from "@/types/projects";
-import { ReactElement, SVGProps } from "react";
 
-export const latestsProjects: ProjectCard[] = [
-    {
-        slug: "advent-calendy",
+// The project library contains minimal information for cards display
+export const PROJECTS_LIBRARY: Record<string, ProjectCard> = {
+    "advent-calendly": {
+        slug: "advent-calendly",
         title: "Advent Calendly",
         images: [AdventCalendly],
     },
-    {
+    "learn404": {
         slug: "learn404",
         title: "Learn404",
         images: [Learn404],
     },
-    {
+    "404devinci": {
         slug: "404devinci",
         title: "La 404 Devinci",
         images: [DinoDevinci],
     },
-];
+    "pokedex": {
+        slug: "pokedex",
+        title: "Pokedex",
+        images: [Pokedex],
+    },
+    "eligiusv": {
+        slug: "eligiusv",
+        title: "EligiusV",
+        images: [EligiusV],
+    },
+};
 
-export const allProjects: Project[] = [
+// Type for related projects using strings instead of ProjectCard objects
+type ProjectWithStringRelated = Omit<Project, 'related'> & {
+    related: [string, string];
+};
+
+// Create detailed project info with proper related projects structure as string slugs
+const PROJECTS_WITH_STRING_RELATED: ProjectWithStringRelated[] = [
     {
-        slug: "advent-calendy",
+        slug: "advent-calendly",
         service: "Web application",
         year: 2024,
         stack: [
@@ -74,7 +90,7 @@ export const allProjects: Project[] = [
             frontend: "https://github.com/La-404-Devinci/advent-daily-frontend",
             backend: "https://github.com/La-404-Devinci/advent-daily-backend",
         },
-        related: [],
+        related: ["404devinci", "learn404"],
     },
     {
         slug: "learn404",
@@ -95,7 +111,7 @@ export const allProjects: Project[] = [
         links: {
             github: "https://github.com/learn404/Learn404",
         },
-        related: [],
+        related: ["404devinci", "advent-calendly"],
     },
     {
         slug: "404devinci",
@@ -116,7 +132,7 @@ export const allProjects: Project[] = [
             github: "https://github.com/La-404-Devinci/website",
             website: "https://404devinci.fr",
         },
-        related: [],
+        related: ["advent-calendly", "learn404"],
     },
     {
         slug: "pokedex",
@@ -131,7 +147,7 @@ export const allProjects: Project[] = [
         links: {
             github: "https://github.com/Drixares/projet-pokedex",
         },
-        related: [],
+        related: ["404devinci", "advent-calendly"],
     },
     {
         slug: "eligiusv",
@@ -146,9 +162,18 @@ export const allProjects: Project[] = [
         links: {
             website: "https://eligiusv.fr",
         },
-        related: [],
+        related: ["404devinci", "advent-calendly"],
     },
 ];
+
+// Convert string related slugs to actual ProjectCard objects
+export const PROJECTS_WITH_INFOS: Project[] = PROJECTS_WITH_STRING_RELATED.map(project => ({
+    ...project,
+    related: project.related.map(slug => PROJECTS_LIBRARY[slug]).filter(Boolean)
+}));
+
+// Create a derived PROJECTS array from PROJECTS_WITH_INFOS for easier consumption
+export const PROJECTS: Project[] = PROJECTS_WITH_INFOS;
 
 export const STACK_ICONS: Record<StackName, StackIcon> = {
     Git: Git,
@@ -170,6 +195,4 @@ export const STACK_ICONS: Record<StackName, StackIcon> = {
     Resend: Resend,
     Threejs: Threejs,
     Redis: Redis,
-};
-
-export type Icon = (props: SVGProps<SVGSVGElement>) => ReactElement;
+};  

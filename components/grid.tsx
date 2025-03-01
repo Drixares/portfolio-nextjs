@@ -1,13 +1,13 @@
-import { allProjects } from "@/constants/projects";
-import Project from "./project";
-import Link from "next/link";
 import { PAGES } from "@/constants/page";
+import { PROJECTS_WITH_INFOS } from "@/constants/projects";
+import Link from "next/link";
+import Project from "./project";
 import { Wheel5 } from "./shapes/wheel";
 
 export const ProjectsGrid = () => {
     return (
         <div className="mt-16 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {allProjects.map((project) => (
+            {PROJECTS_WITH_INFOS.map((project) => (
                 <Project project={project} key={project.slug} />
             ))}
             {/* <div className="z-20 relative w-full h-72 bg-[#F8DFCB]/50 rounded-sm flex flex-col justify-center items-center gap-5 overflow-hidden">
@@ -27,7 +27,7 @@ export const ProjectsGrid = () => {
 export const WritingsGrid = () => {
     return (
         <div className="mt-16 w-full grid grid-cols-3 gap-4">
-            {allProjects.map((project) => (
+            {PROJECTS_WITH_INFOS.map((project) => (
                 <Project project={project} key={project.slug} />
             ))}
             <div className="z-20 relative w-full h-72 bg-[#F8DFCB]/50 rounded-sm flex flex-col justify-center items-center gap-5 overflow-hidden">

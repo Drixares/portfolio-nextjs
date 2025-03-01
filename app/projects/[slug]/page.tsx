@@ -1,12 +1,13 @@
-import Footer from "@/components/footer";
-import { allProjects, latestsProjects } from "@/constants/projects";
-import { notFound } from "next/navigation";
-import Heading1 from "@/components/heading1";
-import Badge from "@/components/badge";
-import StackList from "./_components/stack-list";
-import BlocInfo from "./_components/bloc-info";
 import InlineProjectsList from "@/app/_components/inline-projects-list";
+import Badge from "@/components/badge";
+import Footer from "@/components/footer";
+import Heading1 from "@/components/heading1";
+import { PROJECTS_WITH_INFOS } from "@/constants/projects";
+import { getRelatedProjects } from "@/lib/utils";
+import { notFound } from "next/navigation";
+import BlocInfo from "./_components/bloc-info";
 import ImagesList from "./_components/images-list";
+import StackList from "./_components/stack-list";
 
 const ProjectPage = async ({
     params,
@@ -14,9 +15,12 @@ const ProjectPage = async ({
     params: Promise<{ slug: string }>;
 }) => {
     const slug = (await params).slug;
-    const project = allProjects.find((project) => project.slug === slug);
+    const project = PROJECTS_WITH_INFOS.find((project) => project.slug === slug);
 
     if (!project) return notFound();
+
+    // Get related projects
+    const relatedProjects = getRelatedProjects(slug);
 
     return (
         <div className="space-y-64 mx-auto max-w-screen-2xl w-full px-5">
@@ -49,7 +53,7 @@ const ProjectPage = async ({
             <InlineProjectsList
                 data="more"
                 column={2}
-                projects={latestsProjects.slice(0, 2)}
+                projects={relatedProjects}
                 className="grid-cols-1 sm:grid-cols-2"
             />
             <Footer />

@@ -72,7 +72,7 @@ const Project = ({ project, size, priority = false }: ProjectProps) => {
             </div>
             <div
                 role="img"
-                aria-label={`Preview image for ${project.title}`}
+                aria-label={`Image preview of ${project.title}`}
                 className="mx-auto w-3/4 overflow-hidden rounded-sm translate-y-6 
                     group-hover:scale-105 transition-transform duration-200"
             >
@@ -83,7 +83,7 @@ const Project = ({ project, size, priority = false }: ProjectProps) => {
                     height={300}
                     className="w-full h-full object-cover"
                     priority={priority}
-                    loading={priority ? undefined : "lazy"}
+                    loading={!priority ? undefined : "lazy"}
                     placeholder="blur"
                     blurDataURL={project.images[0].blurDataURL}
                 />

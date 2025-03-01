@@ -12,6 +12,9 @@ const ImagesList = ({ images }: ImagesListProps) => {
                     key={`img::${idx}`}
                     src={image}
                     alt={`Image ${idx + 1}`}
+                    priority={idx === 0}
+                    blurDataURL={image.blurDataURL}
+                    placeholder="blur"
                 />
             ))}
         </div>
