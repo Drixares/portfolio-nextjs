@@ -19,7 +19,7 @@ const TopNavigation = () => {
     const navRect = navRef?.getBoundingClientRect();
 
     return (
-        <nav className="sticky top-0 isolate z-50 flex items-center justify-center gap-4 pt-10 px-20">
+        <nav className="sticky top-0 isolate z-50 flex items-center justify-center gap-4 pt-10 px-5 max-w-screen-2xl mx-auto">
             <div className="hidden md:flex flex-1" />
             <div
                 onMouseLeave={() => setIdx(null)}
