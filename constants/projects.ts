@@ -93,12 +93,13 @@ const PROJECTS_WITH_STRING_RELATED: ProjectWithStringRelated[] = [
 		collaborators: [
 			{
 				nickname: "Impulse Lab",
-				link: "https://impulselab.ai",
+				link: "https://impulselab.ai?utm_source=portfolio.matteo-marchelli.com",
 			},
 		],
 		images: [Directory],
 		links: {
-			website: "https://impulse.directory/",
+			website:
+				"https://impulse.directory?utm_source=portfolio.matteo-marchelli.com",
 		},
 		related: ["404devinci", "advent-calendly"],
 	},
