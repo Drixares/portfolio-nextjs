@@ -6,62 +6,56 @@ import { bricolage_grotesk, dm_sans } from "./font";
 import "./globals.css";
 
 export const metadata: Metadata = {
-    title: "Portfolio - Mattéo Marchelli",
-    description: "Mattéo Marchelli's portfolio website - 2025",
-    authors: [{ name: "Mattéo Marchelli", url: "https://matteo-marchelli.com" }],
-    robots: {
-        index: true,
-        follow: true,
-    },
-    openGraph: {
-        title: "Portfolio - Mattéo Marchelli",
-        description: "Mattéo Marchelli's portfolio website - 2025",
-        url: "https://matteo-marchelli.com",
-        siteName: "Mattéo Marchelli's Portfolio",
-        locale: "en_US",
-        type: "website",
-    },
-    icons: {
-        icon: "/favicon.ico",
-    },
-    keywords: [
-        "Mattéo Marchelli",
-        "Mattéo Portfolio",
-        "Web Developer",
-        "Full Stack Developer",
-        "React Developer",
-        "Next.js Developer",
-        "TypeScript Developer",
-    ], 
+	title: "Portfolio - Mattéo Marchelli",
+	description: "Mattéo Marchelli's portfolio website - 2025",
+	authors: [{ name: "Mattéo Marchelli", url: "https://matteo-marchelli.com" }],
+	robots: {
+		index: true,
+		follow: true,
+	},
+	openGraph: {
+		title: "Portfolio - Mattéo Marchelli",
+		description: "Mattéo Marchelli's portfolio website - 2025",
+		url: "https://matteo-marchelli.com",
+		siteName: "Mattéo Marchelli's Portfolio",
+		locale: "en_US",
+		type: "website",
+	},
+	icons: {
+		icon: "/favicon.ico",
+	},
+	keywords: [
+		"Mattéo Marchelli",
+		"Mattéo Portfolio",
+		"Web Developer",
+		"Full Stack Developer",
+		"React Developer",
+		"Next.js Developer",
+		"TypeScript Developer",
+	],
 };
 
 export default function RootLayout({
-    children,
+	children,
 }: Readonly<{
-    children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-    return (
-        <html lang="en" className="scroll-smooth">
-            {/* <head>
-                <script
-                    src="https://unpkg.com/react-scan/dist/auto.global.js"
-                    async
-                />
-            </head> */}
-            <body
-                suppressHydrationWarning
-                className={cn(
-                    "antialiased overflow-x-hidden",
-                    dm_sans.className,
-                    bricolage_grotesk.className
-                )}
-            >
-                <div className="w-full bg-white">
-                    <TopNavigation />
-                    {children}
-                </div>
-                <Toaster />
-            </body>
-        </html>
-    );
+	return (
+		<html lang="en" className="scroll-smooth">
+			<body
+				suppressHydrationWarning
+				className={cn(
+					"antialiased overflow-x-hidden",
+					dm_sans.className,
+					bricolage_grotesk.className,
+				)}
+			>
+				<div className="w-full bg-white">
+					<TopNavigation />
+					{children}
+				</div>
+				<Toaster />
+			</body>
+		</html>
+	);
 }
