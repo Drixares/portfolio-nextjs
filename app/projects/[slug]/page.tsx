@@ -9,6 +9,12 @@ import BlocInfo from "./_components/bloc-info";
 import ImagesList from "./_components/images-list";
 import StackList from "./_components/stack-list";
 
+export function generateStaticParams() {
+	return PROJECTS_WITH_INFOS.map((project) => ({
+		slug: project.slug,
+	}));
+}
+
 const ProjectPage = async ({
 	params,
 }: {
