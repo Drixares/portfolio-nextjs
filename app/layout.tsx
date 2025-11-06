@@ -6,18 +6,18 @@ import { bricolage_grotesk, dm_sans } from "./font";
 import "./globals.css";
 
 export const metadata: Metadata = {
-	title: "Portfolio - Mattéo Marchelli",
-	description: "Mattéo Marchelli's portfolio website - 2025",
+	title: "Mattéo Marchelli - Software Engineer at Impulse Lab",
+	description: "Mattéo Marchelli's portfolio website.",
 	authors: [{ name: "Mattéo Marchelli", url: "https://matteo-marchelli.com" }],
 	robots: {
 		index: true,
 		follow: true,
 	},
 	openGraph: {
-		title: "Portfolio - Mattéo Marchelli",
-		description: "Mattéo Marchelli's portfolio website - 2025",
+		title: "Mattéo Marchelli - Software Engineer at Impulse Lab",
+		description: "Mattéo Marchelli's portfolio website.",
 		url: "https://matteo-marchelli.com",
-		siteName: "Mattéo Marchelli's Portfolio",
+		siteName: "Mattéo Marchelli - Software Engineer at Impulse Lab",
 		locale: "en_US",
 		type: "website",
 	},
@@ -27,6 +27,7 @@ export const metadata: Metadata = {
 	keywords: [
 		"Mattéo Marchelli",
 		"Mattéo Portfolio",
+		"Matteo software engineer",
 		"Web Developer",
 		"Full Stack Developer",
 		"React Developer",
