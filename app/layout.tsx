@@ -1,9 +1,10 @@
-import TopNavigation from "@/components/top-navigation";
-import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Toaster } from "sonner";
+import TopNavigation from "@/components/top-navigation";
+import { cn } from "@/lib/utils";
 import { bricolage_grotesk, dm_sans } from "./font";
 import "./globals.css";
+import Script from "next/script";
 
 export const metadata: Metadata = {
 	title: "Mattéo Marchelli - Software Engineer at Impulse Lab",
@@ -56,6 +57,13 @@ export default function RootLayout({
 					{children}
 				</div>
 				<Toaster />
+				<Script
+					src="https://cdn.databuddy.cc/databuddy.js"
+					data-client-id="QXd-sTxWQw3EdsoH_G3yq"
+					data-enable-batching="true"
+					crossOrigin="anonymous"
+					async
+				/>
 			</body>
 		</html>
 	);
