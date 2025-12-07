@@ -1,18 +1,11 @@
-import DinoDevinci from "@/app/assets/images/projects/404devinci.png";
-import AdventCalendly from "@/app/assets/images/projects/advent-calendly.png";
-import EligiusV from "@/app/assets/images/projects/eligiusv.png";
-import Learn404 from "@/app/assets/images/projects/learn404.png";
-import Pokedex from "@/app/assets/images/projects/pokedex.png";
-import Directory from "@/app/assets/images/projects/directory.png";
-
 import {
-	Git,
-	GitHubLight,
 	AmazonWebServicesLight,
 	BetterAuthLight,
 	CSS,
 	DrizzleORMLight,
 	ExpressjsLight,
+	Git,
+	GitHubLight,
 	HTML5,
 	JavaScript,
 	Jest,
@@ -23,14 +16,26 @@ import {
 	ResendLight,
 	Stripe,
 	TailwindCSS,
-	ThreejsLight,
-	TypeScript,
 	TanStack,
+	ThreejsLight,
 	TRPC,
+	TypeScript,
 } from "@ridemountainpig/svgl-react";
-
-import { Project, ProjectCard, StackIcon, StackName } from "@/types/projects";
+import DinoDevinci from "@/app/assets/images/projects/404devinci.png";
+import AdventCalendly from "@/app/assets/images/projects/advent-calendly.png";
+import Altiora from "@/app/assets/images/projects/altiora.png";
+import Directory from "@/app/assets/images/projects/directory.png";
+import EligiusV from "@/app/assets/images/projects/eligiusv.png";
+import Learn404 from "@/app/assets/images/projects/learn404.png";
+import Linkfolio from "@/app/assets/images/projects/linkfolio.png";
+import Pokedex from "@/app/assets/images/projects/pokedex.png";
 import { Mux } from "@/components/icons/icons";
+import type {
+	Project,
+	ProjectCard,
+	StackIcon,
+	StackName,
+} from "@/types/projects";
 
 // The project library contains minimal information for cards display
 export const PROJECTS_LIBRARY: Record<string, ProjectCard> = {
@@ -38,6 +43,11 @@ export const PROJECTS_LIBRARY: Record<string, ProjectCard> = {
 		slug: "directory",
 		title: "Directory",
 		images: [Directory],
+	},
+	altiora: {
+		slug: "altiora",
+		title: "Altiora",
+		images: [Altiora],
 	},
 	learn404: {
 		slug: "learn404",
@@ -73,6 +83,61 @@ type ProjectWithStringRelated = Omit<Project, "related"> & {
 
 // Create detailed project info with proper related projects structure as string slugs
 const PROJECTS_WITH_STRING_RELATED: ProjectWithStringRelated[] = [
+	{
+		slug: "linkfolio",
+		service: "Web application",
+		year: 2025,
+		stack: [
+			"Next.js",
+			"TailwindCSS",
+			"Typescript",
+			"DrizzleORM",
+			"Tanstack",
+			"TRPC",
+			"DrizzleORM",
+		],
+		title: "Linkfolio",
+		description:
+			"Showcase your projects and experiences with a professional portfolio website in minutes.",
+		collaborators: [
+			{
+				link: "https://impulselab.ai?utm_source=matteo-marchelli.com",
+				nickname: "Impulse Lab",
+			},
+		],
+		images: [Linkfolio],
+		links: {
+			website: "https://linkfolio.ai?utm_source=matteo-marchelli.com",
+		},
+		related: ["altiora", "directory"],
+	},
+	{
+		slug: "altiora",
+		service: "Web application",
+		year: 2025,
+		stack: [
+			"Next.js",
+			"TailwindCSS",
+			"Tanstack",
+			"Typescript",
+			"Stripe",
+			"DrizzleORM",
+		],
+		title: "Altiora",
+		description:
+			"A complete platform for traders to manage their journals, goals, habits and more.",
+		collaborators: [
+			{
+				link: "https://github.com/17sx",
+				nickname: "17sx",
+			},
+		],
+		images: [Altiora],
+		links: {
+			website: "https://altiora.pro",
+		},
+		related: ["directory", "learn404"],
+	},
 	{
 		slug: "directory",
 		service: "Website",
