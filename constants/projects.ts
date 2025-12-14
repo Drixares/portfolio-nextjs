@@ -26,6 +26,7 @@ import AdventCalendly from "@/app/assets/images/projects/advent-calendly.png";
 import Altiora from "@/app/assets/images/projects/altiora.png";
 import Directory from "@/app/assets/images/projects/directory.png";
 import EligiusV from "@/app/assets/images/projects/eligiusv.png";
+import ImpulseLab from "@/app/assets/images/projects/impulselab.png";
 import Learn404 from "@/app/assets/images/projects/learn404.png";
 import Linkfolio from "@/app/assets/images/projects/linkfolio.png";
 import Pokedex from "@/app/assets/images/projects/pokedex.png";
@@ -43,6 +44,11 @@ export const PROJECTS_LIBRARY: Record<string, ProjectCard> = {
 		slug: "directory",
 		title: "Directory",
 		images: [Directory],
+	},
+	impulselab: {
+		slug: "impulselab",
+		title: "Impulse Lab",
+		images: [ImpulseLab],
 	},
 	altiora: {
 		slug: "altiora",
@@ -137,6 +143,26 @@ const PROJECTS_WITH_STRING_RELATED: ProjectWithStringRelated[] = [
 			website: "https://altiora.pro",
 		},
 		related: ["directory", "learn404"],
+	},
+	{
+		slug: "impulselab",
+		service: "Website",
+		year: 2025,
+		stack: ["Next.js", "TailwindCSS", "Typescript"],
+		title: "Impulse Lab",
+		description:
+			"Impulse Lab's website. A company that provides AI solutions to businesses.",
+		collaborators: [
+			{
+				nickname: "Impulse Lab",
+				link: "https://impulselab.ai?utm_source=matteo-marchelli.com",
+			},
+		],
+		images: [ImpulseLab],
+		links: {
+			website: "https://impulselab.ai?utm_source=matteo-marchelli.com",
+		},
+		related: ["directory", "linkfolio"],
 	},
 	{
 		slug: "directory",
