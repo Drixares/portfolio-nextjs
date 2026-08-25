@@ -1,6 +1,8 @@
 import { bricolage_grotesk } from "@/app/font";
-import { cn } from "@/lib/utils";
+import { withClassNames } from "@/lib/utils";
+import { color, font, leading, text } from "@/styles/tokens.stylex";
 import { Project, ProjectCollaborator, ProjectLinks } from "@/types/projects";
+import * as stylex from "@stylexjs/stylex";
 import Link from "next/link";
 
 interface BlocInfoProps {
@@ -8,18 +10,57 @@ interface BlocInfoProps {
     type: "links" | "collaborators" | "date";
 }
 
+const styles = stylex.create({
+    bloc: {
+        display: "flex",
+        flexDirection: "column",
+        gap: "0.125rem",
+        textAlign: "right",
+    },
+    label: {
+        color: color.neutral950,
+        fontSize: text.sm,
+        lineHeight: leading.sm,
+        fontWeight: font.medium,
+        textTransform: "capitalize",
+    },
+    value: {
+        color: color.neutral700,
+        fontWeight: font.medium,
+        fontSize: { default: text.sm, "@media (min-width: 640px)": text.base },
+        lineHeight: { default: leading.sm, "@media (min-width: 640px)": leading.base },
+    },
+    capitalize: {
+        textTransform: "capitalize",
+    },
+    hoverUnderline: {
+        textDecorationLine: { default: "none", ":hover": "underline" },
+    },
+    linksRow: {
+        display: "flex",
+        alignItems: "flex-end",
+        justifyContent: "flex-end",
+        gap: { default: "0.25rem", "@media (min-width: 640px)": "0.5rem" },
+    },
+    entry: {
+        display: "flex",
+        gap: { default: "0.25rem", "@media (min-width: 640px)": "0.5rem" },
+        justifyContent: "flex-end",
+    },
+    separator: {
+        fontSize: { default: text.sm, "@media (min-width: 640px)": text.base },
+        lineHeight: { default: leading.sm, "@media (min-width: 640px)": leading.base },
+    },
+});
+
 const BlocInfo = ({ project, type }: BlocInfoProps) => {
     return (
-        <div className="flex flex-col gap-0.5 text-right">
-            <p className="text-neutral-950 text-sm font-medium capitalize">
-                {type}
-            </p>
+        <div {...stylex.props(styles.bloc)}>
+            <p {...stylex.props(styles.label)}>{type}</p>
 
             {type === "links" && <LinksList links={project.links} />}
             {type === "date" && (
-                <p className="text-neutral-700 font-medium text-sm sm:text-base">
-                    {project.year}
-                </p>
+                <p {...stylex.props(styles.value)}>{project.year}</p>
             )}
             {type === "collaborators" && (
                 <CollaboratorsList collaborators={project.collaborators} />
@@ -30,16 +71,13 @@ const BlocInfo = ({ project, type }: BlocInfoProps) => {
 
 function LinksList({ links }: { links: ProjectLinks }) {
     return (
-        <div className="flex items-end justify-end gap-1 sm:gap-2">
+        <div {...stylex.props(styles.linksRow)}>
             {Object.entries(links).map(([key, value], idx) => (
-                <div
-                    className="flex gap-1 sm:gap-2 justify-end"
-                    key={`links::${idx}`}
-                >
+                <div {...stylex.props(styles.entry)} key={`links::${idx}`}>
                     {idx !== 0 && (
                         <span
-                            className={cn(
-                                "text-sm sm:text-base",
+                            {...withClassNames(
+                                stylex.props(styles.separator),
                                 bricolage_grotesk.className
                             )}
                         >
@@ -49,7 +87,11 @@ function LinksList({ links }: { links: ProjectLinks }) {
                     <Link
                         key={key}
                         href={value}
-                        className="text-neutral-700 font-medium capitalize hover:underline text-sm sm:text-base"
+                        {...stylex.props(
+                            styles.value,
+                            styles.capitalize,
+                            styles.hoverUnderline
+                        )}
                         target="_blank"
                     >
                         {key}
@@ -66,7 +108,7 @@ function CollaboratorsList({
     collaborators: ProjectCollaborator[];
 }) {
     return collaborators.map((collaborator, idx) => (
-        <div className="flex gap-1 sm:gap-2 justify-end" key={`collab::${idx}`}>
+        <div {...stylex.props(styles.entry)} key={`collab::${idx}`}>
             {idx !== 0 && (
                 <span className={bricolage_grotesk.className}>·</span>
             )}
@@ -74,7 +116,7 @@ function CollaboratorsList({
             <Link
                 href={collaborator.link}
                 key={collaborator.nickname}
-                className="text-neutral-700 font-medium hover:underline text-sm sm:text-base"
+                {...stylex.props(styles.value, styles.hoverUnderline)}
                 target="_blank"
             >
                 @{collaborator.nickname}

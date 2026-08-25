@@ -1,8 +1,9 @@
-import { Heading2 } from "../../components/heading2";
-import { type Experience as ExperienceType } from "@/types/experiences";
-import { Line2 } from "./lines";
-import Experience from "./experience";
 import { ImpulseLab } from "@/components/icons/icons";
+import { Heading2 } from "@/components/heading2";
+import { type Experience as ExperienceType } from "@/types/experiences";
+import * as stylex from "@stylexjs/stylex";
+import Experience from "./experience";
+import { Line2 } from "./lines";
 
 const experiences: ExperienceType[] = [
 	{
@@ -39,15 +40,42 @@ const experiences: ExperienceType[] = [
 	},
 ];
 
+const styles = stylex.create({
+	wrapper: {
+		position: "relative",
+		zIndex: 20,
+	},
+	section: {
+		display: "flex",
+		flexDirection: { default: "column", "@media (min-width: 1024px)": "row" },
+		justifyContent: "space-between",
+		gap: "1.5rem",
+		scrollMarginTop: "8rem",
+		marginInline: "auto",
+		maxWidth: "80rem",
+		paddingInline: "1.25rem",
+		width: "100%",
+	},
+	list: {
+		display: "flex",
+		flexDirection: "column",
+		maxWidth: { default: null, "@media (min-width: 1024px)": "50%" },
+		width: "100%",
+	},
+	line: {
+		position: "absolute",
+		top: "-50%",
+		left: 0,
+		zIndex: -10,
+	},
+});
+
 const ExperiencesSection = () => {
 	return (
-		<div className="relative z-20">
-			<section
-				className="flex flex-col lg:flex-row justify-between gap-6 scroll-mt-32 mx-auto max-w-7xl px-5 w-full"
-				id="experiences"
-			>
+		<div {...stylex.props(styles.wrapper)}>
+			<section {...stylex.props(styles.section)} id="experiences">
 				<Heading2>experiences.</Heading2>
-				<div className="flex flex-col lg:max-w-[50%] w-full">
+				<div {...stylex.props(styles.list)}>
 					{experiences.map((experience, idx) => (
 						<Experience
 							idx={idx}
@@ -57,7 +85,7 @@ const ExperiencesSection = () => {
 					))}
 				</div>
 			</section>
-			<Line2 className="absolute -top-1/2 left-0 -z-10" />
+			<Line2 style={styles.line} />
 		</div>
 	);
 };

@@ -1,4 +1,12 @@
+import * as stylex from "@stylexjs/stylex";
 import type { SVGProps } from "react";
+
+const styles = stylex.create({
+	logo: {
+		height: "2rem",
+		width: "auto",
+	},
+});
 
 function Mux(props: SVGProps<SVGSVGElement>) {
 	return (
@@ -38,7 +46,7 @@ function Mux(props: SVGProps<SVGSVGElement>) {
 const ImpulseLab = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		aria-hidden="true"
-		className="h-8 w-auto"
+		{...stylex.props(styles.logo)}
 		fill="currentColor"
 		height="237"
 		viewBox="0 0 389 237"

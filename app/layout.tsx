@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import * as stylex from "@stylexjs/stylex";
 import { Toaster } from "sonner";
 import TopNavigation from "@/components/top-navigation";
-import { cn } from "@/lib/utils";
+import { withClassNames } from "@/lib/utils";
+import { color, theme } from "@/styles/tokens.stylex";
 import { bricolage_grotesk, dm_sans } from "./font";
 import "./globals.css";
 import { Databuddy } from "@databuddy/sdk/react";
@@ -37,22 +39,38 @@ export const metadata: Metadata = {
 	],
 };
 
+const styles = stylex.create({
+	root: {
+		scrollBehavior: "smooth",
+	},
+	body: {
+		WebkitFontSmoothing: "antialiased",
+		MozOsxFontSmoothing: "grayscale",
+		overflowX: "hidden",
+		color: theme.foreground,
+	},
+	shell: {
+		width: "100%",
+		backgroundColor: color.white,
+	},
+});
+
 export default function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" className="scroll-smooth">
+		<html lang="en" {...stylex.props(styles.root)}>
 			<body
 				suppressHydrationWarning
-				className={cn(
-					"antialiased overflow-x-hidden",
+				{...withClassNames(
+					stylex.props(styles.body),
 					dm_sans.className,
 					bricolage_grotesk.className,
 				)}
 			>
-				<div className="w-full bg-white">
+				<div {...stylex.props(styles.shell)}>
 					<TopNavigation />
 					{children}
 				</div>

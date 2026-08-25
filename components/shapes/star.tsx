@@ -1,9 +1,10 @@
 // Generated from https://coolshap.es by realvjy
 import React from "react";
+import * as stylex from "@stylexjs/stylex";
 
-export const Star12 = ({ className }: { className?: string }) => (
+export const Star12 = ({ style }: { style?: stylex.StyleXStyles }) => (
     <svg
-        className={className}
+        {...stylex.props(style)}
         fill="none"
         viewBox="0 0 200 200"
         xmlns="http://www.w3.org/2000/svg"

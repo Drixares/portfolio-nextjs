@@ -1,13 +1,31 @@
 "use client";
 
-import Image, { StaticImageData } from "next/image";
+import { radius } from "@/styles/tokens.stylex";
+import * as stylex from "@stylexjs/stylex";
 import { motion, useScroll, useTransform } from "motion/react";
+import Image, { StaticImageData } from "next/image";
 import { useRef } from "react";
 
 interface AnimatedImageProps {
     image: StaticImageData;
     alt: string;
 }
+
+const styles = stylex.create({
+    container: {
+        position: "relative",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100%",
+        height: "100vh",
+    },
+    frame: {
+        overflow: "hidden",
+        borderRadius: radius.md,
+        width: "24rem",
+    },
+});
 
 const AnimatedImage = ({ image, alt }: AnimatedImageProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -22,14 +40,14 @@ const AnimatedImage = ({ image, alt }: AnimatedImageProps) => {
     const translateYValue = useTransform(scrollYProgress, [0, 1], [-275, 0]);
     const scaleValue = useTransform(scrollYProgress, [0, 1], [1, 4]);
 
+    const frame = stylex.props(styles.frame);
+
     return (
-        <div
-            ref={containerRef}
-            className="relative flex items-center justify-center w-full h-screen"
-        >
+        <div ref={containerRef} {...stylex.props(styles.container)}>
             <motion.div
-                className="overflow-hidden rounded-md w-96"
+                className={frame.className}
                 style={{
+                    ...frame.style,
                     scale: scaleValue,
                     translateX: translateXValue,
                     translateY: translateYValue,

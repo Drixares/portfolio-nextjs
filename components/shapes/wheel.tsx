@@ -1,8 +1,9 @@
 // Generated from https://coolshap.es by realvjy
+import * as stylex from "@stylexjs/stylex";
 
-export const Wheel5 = ({ className }: { className?: string }) => (
+export const Wheel5 = ({ style }: { style?: stylex.StyleXStyles }) => (
     <svg
-        className={className}
+        {...stylex.props(style)}
         fill="none"
         viewBox="0 0 200 200"
         xmlns="http://www.w3.org/2000/svg"

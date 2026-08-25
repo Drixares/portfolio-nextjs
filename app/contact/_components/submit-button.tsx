@@ -1,10 +1,11 @@
 "use client";
 
+import { color, easing, font, leading, text, transition } from "@/styles/tokens.stylex";
+import { ContactSchemaType } from "@/types/contact-form";
+import { ArrowDownRight } from "@phosphor-icons/react/dist/ssr";
+import * as stylex from "@stylexjs/stylex";
 import { motion, Variants } from "motion/react";
 import { FormState } from "react-hook-form";
-import { ArrowDownRight } from "@phosphor-icons/react/dist/ssr";
-import { cn } from "@/lib/utils";
-import { ContactSchemaType } from "@/types/contact-form";
 
 interface SubmitButtonProps {
     formState: FormState<ContactSchemaType>;
@@ -37,27 +38,58 @@ const buttonVariants: Variants = {
     },
 };
 
+const styles = stylex.create({
+    button: {
+        position: "relative",
+        zIndex: 20,
+        textTransform: "uppercase",
+        fontSize: { default: text.xl3, "@media (min-width: 640px)": text.xl4 },
+        lineHeight: { default: leading.xl3, "@media (min-width: 640px)": leading.xl4 },
+        fontWeight: font.light,
+        display: "flex",
+        alignItems: "center",
+        gap: "0.75rem",
+        cursor: "pointer",
+        transitionProperty: transition.colors,
+        transitionDuration: "200ms",
+        transitionTimingFunction: easing.inOut,
+        outline: { default: null, ":focus": "none" },
+    },
+    disabled: {
+        color: color.neutral400,
+        pointerEvents: "none",
+    },
+    underline: {
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        width: "100%",
+        height: "1px",
+        backgroundColor: color.neutral800,
+        transformOrigin: "center",
+        zIndex: -10,
+    },
+});
+
 const SubmitButton = ({ formState }: SubmitButtonProps) => {
+    const disabled = formState.isSubmitting || !formState.isValid;
+    const underline = stylex.props(styles.underline);
+
     return (
         <motion.button
             type="submit"
-            disabled={formState.isSubmitting || !formState.isValid}
+            disabled={disabled}
             initial="initial"
             whileHover={["hover", "background", "textColor"]}
             whileFocus={["hover", "background", "textColor"]}
             variants={buttonVariants}
-            className={cn(
-                `relative z-20 group uppercase text-3xl sm:text-4xl font-light flex items-center gap-3 
-                cursor-pointer transition-colors duration-200 focus:outline-none`,
-                (formState.isSubmitting || !formState.isValid) &&
-                    "!text-neutral-400 pointer-events-none"
-            )}
+            {...stylex.props(styles.button, disabled && styles.disabled)}
         >
             <ArrowDownRight />
             {formState.isSubmitting ? "Sending..." : "Submit"}
             <motion.div
-                className="absolute bottom-0 left-0 w-full h-px bg-neutral-800
-            origin-center -z-10"
+                className={underline.className}
+                style={underline.style}
                 variants={underlineVariants}
             />
         </motion.button>

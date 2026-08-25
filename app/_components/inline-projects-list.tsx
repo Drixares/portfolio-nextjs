@@ -1,40 +1,52 @@
-import { cn } from "@/lib/utils";
-import Project from "../../components/project";
+import Project from "@/components/project";
+import { color } from "@/styles/tokens.stylex";
 import { Project as ProjectType, ProjectCard } from "@/types/projects";
+import * as stylex from "@stylexjs/stylex";
 
 interface InlineProjectsListProps {
-    projects: ProjectType[] | ProjectCard[];
-    data: "latest" | "more";
-    column?: number;
-    className?: string;
+	projects: ProjectType[] | ProjectCard[];
+	data: "latest" | "more";
+	/** Overrides for the section wrapper (spacing). */
+	style?: stylex.StyleXStyles;
+	/** Grid overrides — most callers only need to set `gridTemplateColumns`. */
+	gridStyle?: stylex.StyleXStyles;
 }
 
-const InlineProjectsList = ({
-    projects,
-    data,
-    column,
-    className,
-}: InlineProjectsListProps) => {
-    const heading = data === "latest" ? "Latests" : "More projects";
+const styles = stylex.create({
+	wrapper: {
+		marginTop: "8rem",
+	},
+	heading: {
+		textTransform: "uppercase",
+		color: color.neutral400,
+		textAlign: "end",
+		marginBottom: "0.5rem",
+	},
+	grid: {
+		display: "grid",
+		gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+		gap: "1rem",
+	},
+});
 
-    return (
-        <div className="mt-32">
-            <p className="uppercase text-neutral-400 text-end mb-2">
-                {heading}
-            </p>
-            <div
-                className={cn(
-                    "grid grid-cols-3 gap-4",
-                    column && `grid-cols-${column}`,
-                    className
-                )}
-            >
-                {projects.map((project) => (
-                    <Project key={project.slug} project={project} />
-                ))}
-            </div>
-        </div>
-    );
+const InlineProjectsList = ({
+	projects,
+	data,
+	style,
+	gridStyle,
+}: InlineProjectsListProps) => {
+	const heading = data === "latest" ? "Latests" : "More projects";
+
+	return (
+		<div {...stylex.props(styles.wrapper, style)}>
+			<p {...stylex.props(styles.heading)}>{heading}</p>
+			<div {...stylex.props(styles.grid, gridStyle)}>
+				{projects.map((project) => (
+					<Project key={project.slug} project={project} />
+				))}
+			</div>
+		</div>
+	);
 };
 
 export default InlineProjectsList;

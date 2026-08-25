@@ -1,14 +1,21 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { color } from "@/styles/tokens.stylex";
+import * as stylex from "@stylexjs/stylex";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Ref, RefObject, useRef } from "react";
 
 interface LineProps {
-    className?: string;
+    style?: stylex.StyleXStyles;
 }
 
-export const Line = ({ className }: LineProps) => {
+const styles = stylex.create({
+    path: {
+        stroke: color.sand30,
+    },
+});
+
+export const Line = ({ style }: LineProps) => {
     const svgRef = useRef<unknown>(null);
 
     const { scrollYProgress } = useScroll({
@@ -22,7 +29,7 @@ export const Line = ({ className }: LineProps) => {
         <motion.svg
             viewBox="0 0 1440 230"
             xmlns="http://www.w3.org/2000/svg"
-            className={cn(className, "stroke-[#F8DFCB]/30")}
+            {...stylex.props(styles.path, style)}
             fill="none"
             ref={svgRef as Ref<SVGSVGElement>}
         >
@@ -39,7 +46,7 @@ export const Line = ({ className }: LineProps) => {
     );
 };
 
-export const Line2 = ({ className }: LineProps) => {
+export const Line2 = ({ style }: LineProps) => {
     const svgRef = useRef<unknown>(null);
 
     const { scrollYProgress } = useScroll({
@@ -56,7 +63,7 @@ export const Line2 = ({ className }: LineProps) => {
             viewBox="0 0 348 582"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className={cn(className, "stroke-[#F8DFCB]/30")}
+            {...stylex.props(styles.path, style)}
             ref={svgRef as Ref<SVGSVGElement>}
         >
             <motion.path

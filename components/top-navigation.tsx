@@ -1,13 +1,91 @@
 "use client";
 
 import { NAVLINKS, ROUTES } from "@/constants/page";
-import { cn } from "@/lib/utils";
+import {
+	color,
+	easing,
+	radius,
+	shadow,
+	transition,
+} from "@/styles/tokens.stylex";
+import * as stylex from "@stylexjs/stylex";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 type LinkRef = HTMLElement | null;
+
+const styles = stylex.create({
+	nav: {
+		position: "sticky",
+		top: 0,
+		isolation: "isolate",
+		zIndex: 50,
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "center",
+		gap: "1rem",
+		paddingTop: "2.5rem",
+		paddingInline: "1.25rem",
+		maxWidth: "80rem",
+		marginInline: "auto",
+	},
+	spacer: {
+		display: { default: "none", "@media (min-width: 768px)": "flex" },
+		flexGrow: 1,
+		flexShrink: 1,
+		flexBasis: "0%",
+	},
+	pill: {
+		position: "relative",
+		display: "flex",
+		borderRadius: radius.lg,
+		borderWidth: 1,
+		borderStyle: "solid",
+		borderColor: color.neutral200,
+		backgroundColor: color.white80,
+		padding: "0.25rem",
+		boxShadow: shadow.md,
+		backdropFilter: "blur(12px)",
+	},
+	link: {
+		color: { default: color.neutral500, ":hover": color.neutral950 },
+		paddingInline: "0.75rem",
+		paddingBlock: "0.25rem",
+	},
+	linkActive: {
+		color: color.neutral950,
+	},
+	highlight: {
+		position: "absolute",
+		left: 0,
+		zIndex: -10,
+		height: "1.75rem",
+		borderRadius: radius.sm,
+		backgroundColor: color.neutral200_70,
+		backdropFilter: "blur(8px)",
+	},
+	navLinks: {
+		display: { default: "none", "@media (min-width: 768px)": "flex" },
+		flexGrow: 1,
+		flexShrink: 1,
+		flexBasis: "0%",
+		alignItems: "center",
+		justifyContent: "flex-end",
+		gap: "0.75rem",
+	},
+	navLink: {
+		color: { default: color.neutral400, ":hover": color.neutral950 },
+		textDecorationLine: { default: "none", ":hover": "underline" },
+		textUnderlineOffset: "4px",
+		textDecorationStyle: "wavy",
+		cursor: "alias",
+		transitionProperty: transition.colors,
+		transitionDuration: "150ms",
+		transitionTimingFunction: easing.inOut,
+	},
+});
 
 const TopNavigation = () => {
 	const pathname = usePathname();
@@ -19,11 +97,11 @@ const TopNavigation = () => {
 	const navRect = navRef?.getBoundingClientRect();
 
 	return (
-		<nav className="sticky top-0 isolate z-50 flex items-center justify-center gap-4 pt-10 px-5 max-w-7xl mx-auto">
-			<div className="hidden md:flex flex-1" />
+		<nav {...stylex.props(styles.nav)}>
+			<div {...stylex.props(styles.spacer)} />
 			<div
 				onMouseLeave={() => setIdx(null)}
-				className="relative flex rounded-lg border border-neutral-200 bg-white/80 p-1 shadow-md backdrop-blur-md"
+				{...stylex.props(styles.pill)}
 				ref={(el) => setNavRef(el!)}
 				style={{ transform: "none" }}
 			>
@@ -35,9 +113,9 @@ const TopNavigation = () => {
 							linkRefs[idx] = el;
 						}}
 						onPointerEnter={() => setIdx(idx)}
-						className={cn(
-							`text-neutral-500 hover:text-neutral-950 px-3 py-1`,
-							pathname === path && "text-neutral-950",
+						{...stylex.props(
+							styles.link,
+							pathname === path && styles.linkActive,
 						)}
 					>
 						{label}
@@ -46,7 +124,7 @@ const TopNavigation = () => {
 				<AnimatePresence>
 					{hoveredLink && (
 						<motion.div
-							className="absolute left-0 -z-10 h-7 rounded-sm bg-neutral-200/70 backdrop-blur"
+							{...stylex.props(styles.highlight)}
 							initial={{
 								left: hoveredLink.left - (navRect?.left || 0),
 								height: hoveredLink.height,
@@ -79,13 +157,12 @@ const TopNavigation = () => {
 
 function NavLinks() {
 	return (
-		<div className="hidden md:flex flex-1 items-center justify-end gap-3">
+		<div {...stylex.props(styles.navLinks)}>
 			{NAVLINKS.map(({ label, path }) => (
 				<Link
 					key={path}
 					href={path}
-					className="text-neutral-400 hover:text-neutral-950 hover:underline 
-                        underline-offset-4 cursor-alias decoration-wavy transition-colors"
+					{...stylex.props(styles.navLink)}
 					target="_blank"
 				>
 					{label}

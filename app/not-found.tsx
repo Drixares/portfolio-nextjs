@@ -1,37 +1,121 @@
 import Heading1 from "@/components/heading1";
 import Peep from "@/components/peep";
+import {
+	color,
+	easing,
+	font,
+	leading,
+	radius,
+	text,
+	transition,
+} from "@/styles/tokens.stylex";
+import * as stylex from "@stylexjs/stylex";
 import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
 
+const styles = stylex.create({
+	page: {
+		marginBottom: { default: "4rem", "@media (min-width: 768px)": "8rem" },
+		marginTop: { default: "0.5rem", "@media (min-width: 768px)": "8rem" },
+		marginInline: "auto",
+		maxWidth: "80rem",
+		width: "100%",
+		paddingInline: "1.25rem",
+		display: "flex",
+		flexDirection: { default: "column", "@media (min-width: 768px)": "row" },
+		alignItems: "center",
+		justifyContent: "center",
+		columnGap: "2.5rem",
+	},
+	illustration: {
+		position: "relative",
+		width: { default: "16rem", "@media (min-width: 768px)": "24rem" },
+		height: { default: "16rem", "@media (min-width: 768px)": "24rem" },
+		overflow: "hidden",
+	},
+	peep: {
+		width: "100%",
+		height: "100%",
+		objectFit: "cover",
+	},
+	content: {
+		display: "flex",
+		flexDirection: "column",
+		alignItems: { default: "center", "@media (min-width: 768px)": "flex-start" },
+		justifyContent: "center",
+		textAlign: { default: null, "@media (max-width: 767.98px)": "center" },
+	},
+	heading: {
+		textTransform: "capitalize",
+		display: "flex",
+		flexDirection: "column",
+		alignItems: { default: "center", "@media (min-width: 768px)": "flex-start" },
+		justifyContent: "center",
+	},
+	code: {
+		fontSize: { default: text.xl8, "@media (min-width: 768px)": text.xl9 },
+		lineHeight: leading.none,
+		fontWeight: font.bold,
+	},
+	tagline: {
+		fontSize: text.xl2,
+		lineHeight: leading.xl2,
+		fontWeight: font.medium,
+		color: color.neutral600,
+	},
+	blurb: {
+		marginTop: "1rem",
+		color: color.neutral500,
+		textAlign: { default: "center", "@media (min-width: 768px)": "left" },
+		maxWidth: "28rem",
+	},
+	back: {
+		backgroundColor: { default: color.neutral900, ":hover": color.neutral800 },
+		color: color.white,
+		paddingInline: "1.5rem",
+		paddingBlock: "0.75rem",
+		borderRadius: radius.full,
+		marginTop: "2rem",
+		display: "flex",
+		alignItems: "center",
+		gap: "0.5rem",
+		// StyleX has no descendant selectors: this stands in for the arrow's
+		// former `group-hover:-translate-x-1`.
+		"--back-arrow-x": { default: "0px", ":hover": "-0.25rem" },
+	},
+	backArrow: {
+		width: "1rem",
+		height: "1rem",
+		transform: "translateX(var(--back-arrow-x))",
+		transitionProperty: transition.transform,
+		transitionDuration: "300ms",
+		transitionTimingFunction: easing.inOut,
+	},
+});
+
 const NotFound = () => {
 	return (
-		<div className="mb-16 mt-2 md:my-32 mx-auto max-w-7xl w-full px-5 flex flex-col md:flex-row items-center justify-center gap-x-10">
+		<div {...stylex.props(styles.page)}>
 			{/* Peep illustration with hover effect */}
-			<div className="relative size-64 md:size-96 overflow-hidden group">
-				<Peep className="size-full object-cover animate-float" />
+			<div {...stylex.props(styles.illustration)}>
+				<Peep style={styles.peep} />
 			</div>
 
 			{/* Content */}
-			<div className="flex flex-col items-center md:items-start justify-center max-md:text-center">
-				<Heading1 className="capitalize flex flex-col items-center md:items-start justify-center">
-					<span className="text-8xl md:text-9xl font-bold">404</span>
-					<span className="text-2xl font-medium text-neutral-600">
-						Oops ! Page not found
-					</span>
+			<div {...stylex.props(styles.content)}>
+				<Heading1 style={styles.heading}>
+					<span {...stylex.props(styles.code)}>404</span>
+					<span {...stylex.props(styles.tagline)}>Oops ! Page not found</span>
 				</Heading1>
 
-				<p className="mt-4 text-neutral-500 text-center md:text-left max-w-md">
+				<p {...stylex.props(styles.blurb)}>
 					The page you are looking for seems to have disappeared into
 					cyberspace. Don&apos;t worry, you can always go back to the homepage!
 				</p>
 
-				<Link
-					href="/"
-					className="bg-neutral-900 hover:bg-neutral-800 text-white px-6 py-3 rounded-full mt-8 
-                            flex items-center gap-2 group"
-				>
-					<ArrowLeftIcon className="size-4 group-hover:-translate-x-1 transition-transform duration-300" />{" "}
-					Go back to homepage
+				<Link href="/" {...stylex.props(styles.back)}>
+					<ArrowLeftIcon {...stylex.props(styles.backArrow)} /> Go back to
+					homepage
 				</Link>
 			</div>
 		</div>

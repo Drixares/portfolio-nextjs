@@ -1,7 +1,16 @@
 import { bricolage_grotesk } from "@/app/font";
-import { cn } from "@/lib/utils";
+import { withClassNames } from "@/lib/utils";
+import {
+	color,
+	easing,
+	leading,
+	radius,
+	text,
+	transition,
+} from "@/styles/tokens.stylex";
 import { ProjectCard } from "@/types/projects";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+import * as stylex from "@stylexjs/stylex";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -17,40 +26,115 @@ interface ProjectProps {
 	priority?: boolean;
 }
 
-const columnSpan = {
-	1: "col-span-1 aspect-square",
-	2: "col-span-2 aspect-[2]",
-	3: "col-span-3 aspect-[3]",
-} as const;
+const styles = stylex.create({
+	card: {
+		backgroundColor: color.neutral50,
+		borderRadius: radius.sm,
+		display: "flex",
+		flexDirection: "column",
+		justifyContent: "space-between",
+		overflow: "hidden",
+		// StyleX has no descendant selectors, so the former `group-hover:*`
+		// utilities are expressed as custom properties toggled on hover and
+		// consumed by the children below.
+		"--project-link-bg": { default: color.transparent, ":hover": color.white },
+		"--project-link-border": {
+			default: color.transparent,
+			":hover": color.neutral200,
+		},
+		"--project-link-color": {
+			default: color.neutral400,
+			":hover": color.neutral900,
+		},
+		"--project-preview-scale": { default: "1", ":hover": "1.05" },
+	},
+	header: {
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "space-between",
+		padding: "1rem",
+	},
+	label: {
+		color: color.neutral500,
+		display: "inline-flex",
+		alignItems: "center",
+		gap: "0.375rem",
+	},
+	title: {
+		fontSize: { default: text.sm, "@media (min-width: 640px)": text.base },
+		lineHeight: { default: leading.sm, "@media (min-width: 640px)": leading.base },
+	},
+	link: {
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "center",
+		borderRadius: radius.full,
+		borderWidth: 1,
+		borderStyle: "solid",
+		borderColor: "var(--project-link-border)",
+		backgroundColor: "var(--project-link-bg)",
+		color: "var(--project-link-color)",
+		width: "2.5rem",
+		height: "2.5rem",
+		transitionProperty: transition.colors,
+		transitionDuration: "150ms",
+		transitionTimingFunction: easing.inOut,
+		cursor: "alias",
+	},
+	tooltip: {
+		fontSize: text.xs,
+		lineHeight: leading.xs,
+		backgroundColor: color.neutral700,
+		color: color.neutral50,
+	},
+	preview: {
+		marginInline: "auto",
+		width: "75%",
+		height: "100%",
+		overflow: "hidden",
+		borderRadius: radius.sm,
+		transform:
+			"translateY(1.5rem) scale(var(--project-preview-scale))",
+		transitionProperty: transition.transform,
+		transitionDuration: "200ms",
+		transitionTimingFunction: easing.inOut,
+	},
+	image: {
+		objectFit: "cover",
+		width: "100%",
+		height: "100%",
+	},
+});
+
+const columnSpan = stylex.create({
+	1: { gridColumn: "span 1 / span 1", aspectRatio: "1 / 1" },
+	2: { gridColumn: "span 2 / span 2", aspectRatio: "2" },
+	3: { gridColumn: "span 3 / span 3", aspectRatio: "3" },
+});
 
 const Project = ({ project, size, priority = false }: ProjectProps) => {
 	return (
 		<div
 			key={project.title}
-			className={cn(
-				`group bg-neutral-50 rounded-sm flex flex-col justify-between overflow-hidden`,
-				size ? columnSpan[size] : null,
-			)}
+			{...stylex.props(styles.card, size ? columnSpan[size] : null)}
 		>
-			<div className="flex items-center justify-between p-4">
+			<div {...stylex.props(styles.header)}>
 				<p
-					className={cn(
-						"text-neutral-500 inline-flex items-center gap-1.5",
+					{...withClassNames(
+						stylex.props(styles.label),
 						bricolage_grotesk.className,
 					)}
 				>
 					<span>Project</span>
 					<span>·</span>
-					<span className="text-sm sm:text-base">{project.title}</span>
+					<span {...stylex.props(styles.title)}>{project.title}</span>
 				</p>
 				<TooltipProvider>
 					<Tooltip delayDuration={200}>
 						<TooltipTrigger asChild>
 							<Link
 								href={`/projects/${project.slug}`}
-								className="flex items-center justify-center rounded-full text-neutral-400 border border-transparent
-                                    size-10 group-hover:bg-white group-hover:border-neutral-200 group-hover:text-neutral-900 transition-colors
-                                    cursor-alias"
+								{...stylex.props(styles.link)}
 								aria-label={`View ${project.title} project details`}
 							>
 								<ArrowUpRight size={18} weight="bold" />
@@ -58,10 +142,8 @@ const Project = ({ project, size, priority = false }: ProjectProps) => {
 						</TooltipTrigger>
 						<TooltipContent
 							side="left"
-							className={cn(
-								"text-xs bg-neutral-700 text-neutral-50",
-								bricolage_grotesk.className,
-							)}
+							style={styles.tooltip}
+							className={bricolage_grotesk.className}
 						>
 							View project
 						</TooltipContent>
@@ -71,13 +153,12 @@ const Project = ({ project, size, priority = false }: ProjectProps) => {
 			<div
 				role="img"
 				aria-label={`Image preview of ${project.title}`}
-				className="mx-auto w-3/4 h-full overflow-hidden rounded-sm translate-y-6 
-                    group-hover:scale-105 transition-transform duration-200"
+				{...stylex.props(styles.preview)}
 			>
 				<Image
 					src={project.images[0]}
 					alt={`${project.title} preview`}
-					className="object-cover size-full"
+					{...stylex.props(styles.image)}
 					priority={priority}
 					loading={!priority ? undefined : "lazy"}
 					placeholder="blur"

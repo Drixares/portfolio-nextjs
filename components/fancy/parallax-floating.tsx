@@ -11,8 +11,8 @@ import {
 } from "react";
 import { useAnimationFrame, useInView } from "motion/react";
 
-import { cn } from "@/lib/utils";
 import { useMousePositionRef } from "@/hooks/use-mouse-position-ref";
+import * as stylex from "@stylexjs/stylex";
 
 interface FloatingContextType {
     registerElement: (
@@ -27,14 +27,25 @@ const FloatingContext = createContext<FloatingContextType | null>(null);
 
 interface FloatingProps {
     children: ReactNode;
-    className?: string;
+    style?: stylex.StyleXStyles;
     sensitivity?: number;
     easingFactor?: number;
 }
 
+const styles = stylex.create({
+    container: {
+        position: "absolute",
+        inset: 0,
+    },
+    element: {
+        position: "absolute",
+        willChange: "transform",
+    },
+});
+
 const Floating = ({
     children,
-    className,
+    style,
     sensitivity = 1,
     easingFactor = 0.05,
     ...props
@@ -99,7 +110,7 @@ const Floating = ({
         >
             <div
                 ref={containerRef}
-                className={cn("absolute inset-0", className)}
+                {...stylex.props(styles.container, style)}
                 {...props}
             >
                 {children}
@@ -112,13 +123,13 @@ export default Floating;
 
 interface FloatingElementProps {
     children: ReactNode;
-    className?: string;
+    style?: stylex.StyleXStyles;
     depth?: number;
 }
 
 export const FloatingElement = ({
     children,
-    className,
+    style,
     depth = 1,
 }: FloatingElementProps) => {
     const elementRef = useRef<HTMLDivElement>(null);
@@ -140,10 +151,7 @@ export const FloatingElement = ({
     }, [depth, context]);
 
     return (
-        <div
-            ref={elementRef}
-            className={cn("absolute will-change-transform", className)}
-        >
+        <div ref={elementRef} {...stylex.props(styles.element, style)}>
             {children}
         </div>
     );

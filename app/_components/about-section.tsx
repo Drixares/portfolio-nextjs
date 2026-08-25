@@ -1,6 +1,63 @@
+import { Heading2 } from "@/components/heading2";
+import {
+	color,
+	easing,
+	leading,
+	text,
+	transition,
+} from "@/styles/tokens.stylex";
+import * as stylex from "@stylexjs/stylex";
 import Link from "next/link";
-import { Heading2 } from "../../components/heading2";
 import { Line } from "./lines";
+
+const styles = stylex.create({
+	wrapper: {
+		position: "relative",
+		zIndex: 20,
+		width: "100%",
+		paddingInline: "1.25rem",
+	},
+	section: {
+		marginInline: "auto",
+		maxWidth: "42rem",
+		width: "100%",
+		display: "flex",
+		flexDirection: "column",
+		alignItems: "center",
+		gap: "1.5rem",
+	},
+	headingRow: {
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "space-between",
+		width: "100%",
+	},
+	prose: {
+		display: "flex",
+		flexDirection: "column",
+		gap: "1.25rem",
+		color: color.neutral600,
+		fontSize: { default: text.lg, "@media (min-width: 768px)": text.xl },
+		lineHeight: { default: leading.lg, "@media (min-width: 768px)": leading.xl },
+	},
+	link: {
+		color: color.neutral950,
+		textDecorationLine: { default: "none", ":hover": "underline" },
+		textUnderlineOffset: "4px",
+		cursor: "alias",
+		textDecorationStyle: "wavy",
+		transitionProperty: transition.colors,
+		transitionDuration: "150ms",
+		transitionTimingFunction: easing.inOut,
+	},
+	line: {
+		position: "absolute",
+		top: "-20rem",
+		left: "-0.75rem",
+		width: "102vw",
+		zIndex: -10,
+	},
+});
 
 const AboutSection = () => {
 	const calculateAge = () => {
@@ -22,19 +79,19 @@ const AboutSection = () => {
 	const age = calculateAge();
 
 	return (
-		<div className="relative z-20 w-full px-5">
-			<section className="mx-auto max-w-2xl w-full flex flex-col items-center gap-6">
-				<div className="flex items-center justify-between w-full">
+		<div {...stylex.props(styles.wrapper)}>
+			<section {...stylex.props(styles.section)}>
+				<div {...stylex.props(styles.headingRow)}>
 					<Heading2>about.</Heading2>
 					{/* <Badge>looking for internship</Badge> */}
 				</div>
-				<div className="flex flex-col gap-5 text-neutral-600 text-lg md:text-xl">
+				<div {...stylex.props(styles.prose)}>
 					<p>
 						A {age} yo student & SWE at{" "}
 						<Link
 							href="https://impulselab.ai"
 							target="_blank"
-							className="text-neutral-950 hover:underline underline-offset-4 cursor-alias decoration-wavy transition-colors"
+							{...stylex.props(styles.link)}
 						>
 							Impulse Lab
 						</Link>{" "}
@@ -51,7 +108,7 @@ const AboutSection = () => {
 						<Link
 							href="https://iim.fr"
 							target="_blank"
-							className="text-neutral-950 hover:underline underline-offset-4 cursor-alias decoration-wavy transition-colors"
+							{...stylex.props(styles.link)}
 						>
 							IIM Digital School
 						</Link>{" "}
@@ -59,7 +116,7 @@ const AboutSection = () => {
 					</p>
 				</div>
 			</section>
-			<Line className="absolute -top-80 -left-3 w-[102vw] -z-10" />
+			<Line style={styles.line} />
 		</div>
 	);
 };
